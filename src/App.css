@@ -1,0 +1,376 @@
+@font-face {
+    font-family: 'Cinzel';
+    src: url('./assets/fonts/Cinzel-Bold.woff2') format('woff2'),
+        url('./assets/fonts/Cinzel-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Cinzel';
+    src: url('./assets/fonts/Cinzel-Black.woff2') format('woff2'),
+        url('./assets/fonts/Cinzel-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Cinzel';
+    src: url('./assets/fonts/Cinzel-ExtraBold.woff2') format('woff2'),
+        url('./assets/fonts/Cinzel-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Cinzel';
+    src: url('./assets/fonts/Cinzel-SemiBold.woff2') format('woff2'),
+        url('./assets/fonts/Cinzel-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Cinzel';
+    src: url('./assets/fonts/Cinzel-Medium.woff2') format('woff2'),
+        url('./assets/fonts/Cinzel-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Cinzel';
+    src: url('./assets/fonts/Cinzel-Regular.woff2') format('woff2'),
+        url('./assets/fonts/Cinzel-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-Bold.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-Black.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-BlackItalic.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-ExtraLight.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-ExtraBoldItalic.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-ExtraBoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-BoldItalic.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-ExtraBold.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-Italic.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-ExtraLightItalic.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-ExtraLightItalic.woff') format('woff');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-LightItalic.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-Light.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-Medium.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-Regular.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-SemiBoldItalic.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-SemiBold.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-Thin.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-MediumItalic.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-ThinItalic.woff2') format('woff2'),
+        url('./assets/fonts/Raleway-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('./assets/fonts/SegoeUI.woff2') format('woff2'),
+        url('./assets/fonts/SegoeUI.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+*{
+    font-family: 'Raleway';
+    box-sizing: border-box; 
+}
+body{
+    background: #000;
+}
+h1 , h2 , h3 , h4 , h5 , h6{
+    font-family: 'Cinzel';
+    color: #f1f9f2;
+}
+p{
+    color: #f1f9f2;
+}
+/* Header */
+
+.header {
+    padding: 13px 0px;
+}
+.container {
+    max-width: 1170px;
+    margin: auto;
+    padding: 0 15px;
+}
+.header .logo {
+    width: max-content;
+    margin: auto;
+}
+/* Header */
+
+/* Banner */
+
+.homebanner {
+    height: 400px;
+    background: url(./assets/img/banner.jpg) center no-repeat;
+    background-size: cover;
+    border-top: 1px solid #8c6816;
+}
+/* Banner */
+
+/* Inner Section */
+
+.simple-sec .img {
+    width: 50%;
+    padding: 0 15px;
+}
+.simple-sec .content-box {
+    width: 50%;
+    padding: 0 15px;
+}
+.simple-sec .img img {
+    width: 100%;
+}
+.s-row {
+    display: flex;
+    align-items: center;
+    margin: 0 -15px;
+    border-bottom: 1px solid #8C6816;
+    padding: 50px 0px;
+}
+.simple-sec h3 {
+    font-size: 30px;
+    line-height: 39px;
+    font-weight: 500;
+    margin: 0 0 25px;
+}
+.simple-sec p {
+    font-size: 16px;
+    line-height: 30px;
+    margin: 0 0 20px;
+}
+.simple-sec p:last-child {
+    margin: 0;
+}
+.simple-sec button {
+    background: #F1F9F2;
+    font-family: 'Cinzel';
+    color: #000;
+    font-size: 15px;
+    line-height: 15px;
+    padding: 12px 24px;
+    border-radius: 3px;
+    border: 0;
+    cursor: pointer;
+}
+.roadmap {
+    padding: 40px 0px;
+}
+.roadmap h2 {
+    font-size: 39px;
+    line-height: 51px;
+    margin: 0 0 30px;
+    text-align: center;
+    font-weight: 600;
+}
+.roadmap .s-row {
+    padding: 0;
+    border: 0;
+}
+.roadmap span  {
+    padding: 0 15px;
+}
+.roadmap  h3 {
+    font-size: 30px;
+    line-height: 30px;
+    margin: 0;
+    font-weight: 600;
+}
+.roadmap h5 {
+    color: #7a7a7a;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 400;
+    margin: 0;
+}
+.roadmap p {
+    font-size: 15px;
+    line-height: 28px;
+    margin: 20px 0px 0px;
+}
+.roadmap h4 {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 600;
+    margin: 0;
+}
+/* Inner Section */
+
+/* Footer */
+
+.footer {
+    border-top: 1px solid #8C6816;
+    padding: 20px 0px 50px;
+}
+.footer .copyryt {
+    width: 50%;
+}
+.footer .sociallinks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer .copyryt p {
+    margin: 0;
+    text-align: center;
+}
+.footer .sociallinks li {
+    margin-right: 25px;
+}
+.footer .sociallinks li:last-child {
+    margin: 0;
+}
+.footer .sociallinks li a {
+    color: #fff;
+    font-size: 22px;
+}
+.footer .s-row {
+    border: 0;
+    padding: 0;
+}
+.footer .s-row {
+    border: 0;
+    padding: 0;
+}
+.footer .really {
+    margin: 60px 0px 0px;
+}
+.footer .really p {
+    margin: 0;
+}
+
+/* Footer */
