@@ -1,29 +1,19 @@
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useMoralis } from 'react-moralis';
 import './App.css';
-import Header from './components/header';
-import Banner from './components/banner';
-import Fashion from './components/fashion';
-import Clothing from './components/clothing';
-import About from './components/about';
-import Roadmap from './components/roadmap';
-import Footer from './components/footer';
+import MainRoute from './components/MainRoute';
 
-function App() {
+const App = () => {
+  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
+
+  useEffect(() => {
+    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated, isWeb3Enabled]);
+  console.log("isWeb3Enabled", isWeb3Enabled)
   return (
-    // <BrowserRouter>
-    //   <Header />
-    //   <Routes>
-    //     <Route path='/' />
-    //   </Routes>
-    // </BrowserRouter>
     <>
-      <Header />
-      <Banner />
-      <Fashion />
-      <Clothing />
-      <About />
-      <Roadmap />
-      <Footer />
+      <MainRoute />
     </>
   );
 }

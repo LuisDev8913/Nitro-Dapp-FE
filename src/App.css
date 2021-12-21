@@ -203,14 +203,14 @@
     box-sizing: border-box; 
 }
 body{
-    background: #000;
+    background: #000 !important;
 }
 h1 , h2 , h3 , h4 , h5 , h6{
     font-family: 'Cinzel';
-    color: #f1f9f2;
+    color: #f1f9f2 !important;
 }
 p{
-    color: #f1f9f2;
+    color: #f1f9f2 !important;
 }
 /* Header */
 
@@ -222,9 +222,24 @@ p{
     margin: auto;
     padding: 0 15px;
 }
+.hdr-row {
+    display: flex;
+    align-items: center;
+}
 .header .logo {
-    width: max-content;
-    margin: auto;
+    width: 30%;
+    text-align: center;
+}
+.header .hdrbtn {
+    text-align: right;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.container-fluid {
+    width: 100%;
+    padding: 0 15px;
 }
 /* Header */
 
@@ -307,7 +322,7 @@ p{
     font-weight: 600;
 }
 .roadmap h5 {
-    color: #7a7a7a;
+    color: #7a7a7a !important;
     font-size: 15px;
     line-height: 21px;
     font-weight: 400;
@@ -374,3 +389,15 @@ p{
 }
 
 /* Footer */
+
+.hdrbtn .authButton p {
+    color: #21bf96 !important;
+    margin-bottom: 0;
+}
+.hdrbtn .nativeBalanceText {
+    margin-right: 10px;
+}
+
+.modalText {
+    color: black !important
+}

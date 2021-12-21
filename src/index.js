@@ -3,11 +3,32 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { MoralisProvider } from "react-moralis";
+import 'antd/dist/antd.css';
+const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
+const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
+
+const Application = () => {
+  const isServerInfo = APP_ID && SERVER_URL ? true : false;
+  if (isServerInfo)
+    return (
+      <MoralisProvider appId={"BAtqpX2SfdAMb7OnRARq9qL7trRddSh7RjYx581m"} serverUrl={"https://9nc89kbbsnzt.usemoralis.com:2053/server"}>
+        <App isServerInfo />
+      </MoralisProvider>
+    );
+  else {
+    return (
+      < >
+        <App />
+      </>
+    );
+  }
+};
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Application />
   </React.StrictMode>,
   document.getElementById('root')
 );
