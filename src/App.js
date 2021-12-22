@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useMoralis } from 'react-moralis';
 import './App.css';
-import MainRoute from './components/MainRoute';
+import MainRoute from './components/Routes/MainRoute';
 
 const App = () => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();

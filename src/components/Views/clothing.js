@@ -1,5 +1,5 @@
 import React from "react";
-import NitidClothing from '../assets/img/nitid-clothing.jpg'
+import { NitidClothingImage } from "../../assets/img";
 
 const Clothing = () => {
     return (
@@ -14,7 +14,7 @@ const Clothing = () => {
                         <p>Additionally, Nitid’s clothing will offer protection from rug pulls.*</p>
                     </div>
                     <div className="img">
-                        <img src={NitidClothing} />
+                        <img src={NitidClothingImage} />
                     </div>
                 </div>
             </div>

@@ -1,11 +1,5 @@
 import React from 'react'
-import About from './about'
-import Banner from './banner'
-import Clothing from './clothing'
-import Fashion from './fashion'
-import Footer from './footer'
-import Header from './header'
-import Roadmap from './roadmap'
+import { About, Banner, Clothing, Fashion, Footer, Header, RoadMap } from '../Views'
 
 const MainRoute = () => {
     return (
@@ -15,7 +9,7 @@ const MainRoute = () => {
             <Fashion />
             <Clothing />
             <About />
-            <Roadmap />
+            <RoadMap />
             <Footer />
         </>
     )

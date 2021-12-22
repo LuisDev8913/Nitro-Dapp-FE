@@ -1,9 +1,8 @@
 import React from "react";
-import Logo from "../assets/img/nitidlogo.jpg"
-import Account from "./Account/Account";
-import Chains from "./Chains/Chains";
-import NativeBalance from "./NativeBalance/NativeBalance";
-import TokenPrice from "./TokenPrice/TokenPrice";
+import { NitidLogo } from "../../assets/img";
+import Account from "../Account/Account";
+import NativeBalance from "../NativeBalance/NativeBalance";
+import TokenPrice from "../TokenPrice";
 
 const Header = () => {
     return (
@@ -15,7 +14,7 @@ const Header = () => {
                     </div>
                     <div className="logo">
                         <a href="#">
-                            <img src={Logo} />
+                            <img src={NitidLogo} />
                         </a>
                     </div>
                     <div className="hdrbtn">
