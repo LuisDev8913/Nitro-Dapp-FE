@@ -2,9 +2,13 @@ import React from "react";
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import FashionNft from '../assets/img/fashion-nft.jpg'
 import { CONTRACT_ADDRESS, getContractABI } from "../constants/enums";
-
+import { useMoralisQuery } from "react-moralis";
 const Fashion = () => {
     const { Moralis } = useMoralis()
+    const { data } = useMoralisQuery("userDate", (query) => query, [], {
+        live: true,
+    });
+    console.log(data,"USE QUERY")
     // const { fetch, data, error, isLoading, isFetching } = useWeb3ExecuteFunction({
     //     abi: getContractABI(),
     //     address: CONTRACT_ADDRESS,
@@ -16,16 +20,17 @@ const Fashion = () => {
     // console.log("data", data)
 
     const mint = async () => {
-        let web3 = await Moralis.Web3.enable();
-        const contract = new web3.eth.Contract(getContractABI(), CONTRACT_ADDRESS);
-        console.log("contract", contract)
-        let receipt = await contract.methods
-            .mint(1, "HELLO")
-            .send({ from: "0xFD7DB40Dde73Db2d1f4365842daD60299C49b8B1", value: "" })
-            .then((response) => console.log("response", response))
-            .catch((err) => console.log("err.message", err.message));
+       console.log(data[0].attributes)
+        // let web3 = await Moralis.Web3.enable();
+        // const contract = new web3.eth.Contract(getContractABI(), CONTRACT_ADDRESS);
+        // console.log("contract", contract)
+        // let receipt = await contract.methods
+        //     .mintForOwner(1, "HELLO")
+        //     .send({ from: "0xFD7DB40Dde73Db2d1f4365842daD60299C49b8B1" })
+        //     .then((response) => console.log("response", response))
+        //     .catch((err) => console.log("err.message", err.message));
 
-        console.log("receipt", receipt)
+        // console.log("receipt", receipt)
     };
     return (
         <div className="simple-sec">
