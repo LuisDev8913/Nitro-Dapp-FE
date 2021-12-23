@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
-import { Button, Card, Checkbox, Form, Input, Modal, Radio } from 'antd'
+import { Button, Card, Checkbox, Form, Input, Modal, Radio, Select, Spin } from 'antd'
 import { isRequiredMessage } from './ValidationMessages';
 import { ClothingSizeTypes, GenderTypes } from '../../constants/enums';
+
+
+import Cities from "../../JSONData/citiesData.json";
+import States from "../../JSONData/statesData.json";
+import Countries from "../../JSONData/countries.json";
+
+
 const tailFormItemLayout = {
     wrapperCol: {
         xs: {
@@ -46,12 +53,35 @@ const MintFormLabels = {
 
 const MintModal = ({ isVisible, closeModal }) => {
 
+
+    const { Option } = Select;
+
+    const provincesData = States;
+    const citiesData = Cities;
+    const countriesData = Countries.countries
+
+
     const [form] = Form.useForm();
     const [isInfoChecked, setIsInfoCheck] = useState(false)
     const onFinish = (values) => {
         console.log("values", values)
     }
 
+    const [country, setCountry] = useState(null);
+    const [province, setProvince] = useState(null);
+    const [city, setCity] = useState(null);
+    const handleCountryChange = value => {
+        setCountry(value.toString());
+        setCity(null);
+        setProvince(null);
+    };
+    const handleProvinceChange = value => {
+        setProvince(value.toString());
+        setCity(null);
+    };
+    const handleCityChange = value => {
+        setCity(value.toString())
+    }
 
     return (
         <Modal
@@ -62,6 +92,46 @@ const MintModal = ({ isVisible, closeModal }) => {
             width={800}
         >
             <Card>
+                <>
+                    <Select
+                        optionFilterProp="children"
+                        showSearch={true}
+                        // onSearch={handleSearchValue}
+                        style={{ width: 120 }}
+                        placeholder="Select Country"
+                        onChange={handleCountryChange}>
+                        {countriesData.map(country => (
+                            <Option key={country.id}>{country.name}</Option>
+                        ))}
+                    </Select>
+
+                    <Select
+                        value={province}
+                        optionFilterProp="children"
+                        showSearch={true}
+                        style={{ width: 120 }}
+                        placeholder="Select Province"
+                        disabled={!country}
+                        onChange={handleProvinceChange}>
+                        {country && provincesData[country].length > 0 && provincesData[country].map(province => (
+                            <Option key={province.id}>{province.name}</Option>
+                        ))}
+                    </Select>
+
+                    <Select
+                        value={city}
+                        optionFilterProp="children"
+                        showSearch={true}
+                        style={{ width: 120 }}
+                        disabled={!province}
+                        placeholder="Select City"
+                        onChange={handleCityChange}>
+                        {province && citiesData[province] && citiesData[province].length > 0 && citiesData[province].map(city => (
+                            <Option key={city.id}>{city.name}</Option>
+                        ))}
+                    </Select>
+                  
+                </>
                 <Form
                     {...formItemLayout}
                     form={form}
