@@ -1,18 +1,26 @@
 import { Layout } from "antd";
 import "./style.css";
-import Text from "antd/lib/typography/Text";
-import MenuItems from "../Components/MenuItems";
 import AdminHeader from "./AdminHeader";
+import { Route, Routes } from "react-router";
+import { RouteNames } from "../../../constants/routeNames";
+import Contract from "./ContractView";
 
-
+const Dummy = () => {
+    return (
+        <p style={{ backgroundColor: 'white' }}>THIS IS ROUTE</p>
+    )
+}
 const AdminView = ({ isServerInfo }) => {
     return (
-        <Layout style={{ height: "100vh", overflow: "auto" }}>
+        <Layout style={{ height: "100vh", overflow: "auto", backgroundColor: 'black' }}>
             <AdminHeader />
             <div style={styles.content}>
-
+                <Routes>
+                    <Route path={`/${RouteNames.Admin.contract}`} element={<Contract />} />
+                    <Route path={`/${RouteNames.Admin.transfers}`} element={<Dummy />} />
+                    <Route path={`/${RouteNames.Admin.NFTS}`} element={<Dummy />} />
+                </Routes>
             </div>
-
         </Layout>
     );
 };
@@ -24,7 +32,8 @@ const styles = {
         justifyContent: "center",
         fontFamily: "Roboto, sans-serif",
         color: "#041836",
-        marginTop: "130px",
-        padding: "10px",
+        marginTop: "64px",
+        borderTop: '2px solid #8c6816',
     },
 };
+
