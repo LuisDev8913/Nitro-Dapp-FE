@@ -28,7 +28,7 @@ import AdminRoute from './components/Routes/AdminRoute';
 
 // export default App;
 
-const App = ({ isWeb3Enabled,isAuthenticated }) => {
+const App = ({ isWeb3Enabled, isAuthenticated }) => {
   let routes = useRoutes([
     { path: "/", element: <MainRoute /> },
     { path: "admin", element: <AdminRoute isWeb3Enabled={isWeb3Enabled} isAuthenticated={isAuthenticated} /> }
@@ -43,7 +43,6 @@ const AppWrapper = () => {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, isWeb3Enabled]);
-  console.log("isWeb3Enabled", isWeb3Enabled , isAuthenticated)
   return (
     <Router>
       <App isWeb3Enabled={isWeb3Enabled} isAuthenticated={isAuthenticated} />

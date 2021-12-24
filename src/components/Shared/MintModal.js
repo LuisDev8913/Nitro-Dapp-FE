@@ -83,6 +83,10 @@ const MintModal = ({ isVisible, closeModal }) => {
         setCity(value.toString())
     }
 
+    const isInfoFieldsDisabled = () => {
+        return !isInfoChecked
+    }
+
     return (
         <Modal
             visible={isVisible}
@@ -92,46 +96,6 @@ const MintModal = ({ isVisible, closeModal }) => {
             width={800}
         >
             <Card>
-                <>
-                    <Select
-                        optionFilterProp="children"
-                        showSearch={true}
-                        // onSearch={handleSearchValue}
-                        style={{ width: 120 }}
-                        placeholder="Select Country"
-                        onChange={handleCountryChange}>
-                        {countriesData.map(country => (
-                            <Option key={country.id}>{country.name}</Option>
-                        ))}
-                    </Select>
-
-                    <Select
-                        value={province}
-                        optionFilterProp="children"
-                        showSearch={true}
-                        style={{ width: 120 }}
-                        placeholder="Select Province"
-                        disabled={!country}
-                        onChange={handleProvinceChange}>
-                        {country && provincesData[country].length > 0 && provincesData[country].map(province => (
-                            <Option key={province.id}>{province.name}</Option>
-                        ))}
-                    </Select>
-
-                    <Select
-                        value={city}
-                        optionFilterProp="children"
-                        showSearch={true}
-                        style={{ width: 120 }}
-                        disabled={!province}
-                        placeholder="Select City"
-                        onChange={handleCityChange}>
-                        {province && citiesData[province] && citiesData[province].length > 0 && citiesData[province].map(city => (
-                            <Option key={city.id}>{city.name}</Option>
-                        ))}
-                    </Select>
-                  
-                </>
                 <Form
                     {...formItemLayout}
                     form={form}
@@ -152,83 +116,110 @@ const MintModal = ({ isVisible, closeModal }) => {
                         label={MintFormLabels.Name.label}
                         rules={[
                             {
-                                required: true,
+                                required: isInfoFieldsDisabled() ? false : true,
                                 message: isRequiredMessage(MintFormLabels.Name.label),
                             },
                         ]}
                     >
-                        <Input />
+                        <Input disabled={isInfoFieldsDisabled()} />
                     </Form.Item>
                     <Form.Item
                         name={MintFormLabels.StreetAddress.key}
                         label={MintFormLabels.StreetAddress.label}
                         rules={[
                             {
-                                required: true,
+                                required: isInfoFieldsDisabled() ? false : true,
                                 message: isRequiredMessage(MintFormLabels.StreetAddress.label),
                             },
                         ]}
                     >
-                        <Input />
+                        <Input disabled={isInfoFieldsDisabled()} />
                     </Form.Item>
                     <Form.Item
-                        name={MintFormLabels.City.key}
-                        label={MintFormLabels.City.label}
+                        name={MintFormLabels.Country.key}
+                        label={MintFormLabels.Country.label}
                         rules={[
                             {
-                                required: true,
-                                message: isRequiredMessage(MintFormLabels.City.label),
+                                required: isInfoFieldsDisabled() ? false : true,
+                                message: isRequiredMessage(MintFormLabels.Country.label),
                             },
                         ]}
                     >
-                        <Input />
+                        <Select
+                            optionFilterProp="children"
+                            showSearch={true}
+                            disabled={isInfoFieldsDisabled()}
+                            onChange={handleCountryChange}>
+                            {countriesData.map(country => (
+                                <Option key={country.id}>{country.name}</Option>
+                            ))}
+                        </Select>
                     </Form.Item>
                     <Form.Item
                         name={MintFormLabels.Province.key}
                         label={MintFormLabels.Province.label}
                         rules={[
                             {
-                                required: true,
+                                required: isInfoFieldsDisabled() ? false : true,
                                 message: isRequiredMessage(MintFormLabels.Province.label),
                             },
                         ]}
                     >
-                        <Input />
+                        <Select
+                            value={province}
+                            optionFilterProp="children"
+                            showSearch={true}
+                            disabled={!country || isInfoFieldsDisabled()}
+                            onChange={handleProvinceChange}>
+                            {country && provincesData[country].length > 0 && provincesData[country].map(province => (
+                                <Option key={province.id}>{province.name}</Option>
+                            ))}
+                        </Select>
+                    </Form.Item>
+                    <Form.Item
+                        name={MintFormLabels.City.key}
+                        label={MintFormLabels.City.label}
+                        rules={[
+
+                            {
+                                required: isInfoFieldsDisabled() ? false : true,
+                                message: isRequiredMessage(MintFormLabels.City.label),
+                            },
+                        ]}
+                    >
+                        <Select
+                            value={city}
+                            optionFilterProp="children"
+                            showSearch={true}
+                            disabled={!province || isInfoFieldsDisabled()}
+                            onChange={handleCityChange}>
+                            {province && citiesData[province] && citiesData[province].length > 0 && citiesData[province].map(city => (
+                                <Option key={city.id}>{city.name}</Option>
+                            ))}
+                        </Select>
                     </Form.Item>
                     <Form.Item
                         name={MintFormLabels.PostalCode.key}
                         label={MintFormLabels.PostalCode.label}
                         rules={[
                             {
-                                required: true,
+                                required: isInfoFieldsDisabled() ? false : true,
                                 message: isRequiredMessage(MintFormLabels.PostalCode.label),
                             },
                         ]}
                     >
-                        <Input />
+                        <Input disabled={isInfoFieldsDisabled()} />
                     </Form.Item>
-                    <Form.Item
-                        name={MintFormLabels.Country.key}
-                        label={MintFormLabels.Country.label}
-                        rules={[
 
-                            {
-                                required: true,
-                                message: isRequiredMessage(MintFormLabels.Country.label),
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
                     <Form.Item
                         name={MintFormLabels.Gender.key}
                         label={MintFormLabels.Gender.label}
                         rules={[{
-                            required: true,
+                            required: isInfoFieldsDisabled() ? false : true,
                             message: isRequiredMessage(MintFormLabels.Gender.label),
                         }]}
                     >
-                        <Radio.Group>
+                        <Radio.Group disabled={isInfoFieldsDisabled()}>
                             <Radio value={GenderTypes.Male}>{GenderTypes.Male}</Radio>
                             <Radio value={GenderTypes.Female}>{GenderTypes.Female}</Radio>
                         </Radio.Group>
@@ -237,11 +228,11 @@ const MintModal = ({ isVisible, closeModal }) => {
                         name={MintFormLabels.ClothingSize.key}
                         label={MintFormLabels.ClothingSize.label}
                         rules={[{
-                            required: true,
+                            required: isInfoFieldsDisabled() ? false : true,
                             message: isRequiredMessage(MintFormLabels.ClothingSize.label),
                         }]}
                     >
-                        <Radio.Group>
+                        <Radio.Group disabled={isInfoFieldsDisabled()}>
                             <Radio.Button value={ClothingSizeTypes.Small}>{ClothingSizeTypes.Small}</Radio.Button>
                             <Radio.Button value={ClothingSizeTypes.Medium}>{ClothingSizeTypes.Medium}</Radio.Button>
                             <Radio.Button value={ClothingSizeTypes.Large}>{ClothingSizeTypes.Large}</Radio.Button>
