@@ -1,4 +1,5 @@
 import React from 'react'
+import UserMetaDataTable from '../UserTable/UserMetaDataTable'
 import { About, Banner, Clothing, Fashion, Footer, Header, RoadMap } from '../Views'
 
 const MainRoute = () => {
@@ -10,6 +11,7 @@ const MainRoute = () => {
             <Clothing />
             <About />
             <RoadMap />
+            <UserMetaDataTable />
             <Footer />
         </>
     )
