@@ -1,12 +1,12 @@
 import { Card, Form, notification } from "antd";
 import { useMemo, useState } from "react";
+import { contractAddress, contractABI, contractName } from '../../../contract/contractInfo.json'
 import { useMoralis, useMoralisQuery } from "react-moralis";
-import { contractABI, contractAddress, contractName } from "../../../contract/contractDetails";
-import { getEllipsisTxt } from "../../../helpers/formatters";
 import Address from "../../Address/Address";
 import ContractMethods from "./ContractMethods";
+import { getEllipsisTxt } from "../../../helpers/formatters";
 
-const Contract = () => {
+export default function Contract() {
     const { Moralis } = useMoralis();
     const [responses, setResponses] = useState({});
 
@@ -63,7 +63,7 @@ const Contract = () => {
                         const options = {
                             contractAddress,
                             functionName: name,
-                            contractABI,
+                            abi: contractABI,
                             msgValue: Moralis.Units.ETH(0.1),
                             params,
                         };
@@ -91,12 +91,12 @@ const Contract = () => {
                                     console.error(error);
                                 });
                         } else {
-                            console.log("INSIDE ELSE FUNCTION", Moralis.executeFunction);
-
+                            console.log("INSIDE ELSE FUNCTION", options);
                             Moralis.executeFunction(options).then((response) => {
                                 console.log("RESPONSE", response)
                                 setResponses({ ...responses, [name]: { result: response, isLoading: false } })
-                            });
+                            }
+                            );
                         }
                     }}
                 >
@@ -122,5 +122,3 @@ const Contract = () => {
         </div>
     );
 }
-
-export default Contract
