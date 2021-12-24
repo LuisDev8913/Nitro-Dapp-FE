@@ -1,0 +1,126 @@
+import { Card, Form, notification } from "antd";
+import { useMemo, useState } from "react";
+import { useMoralis, useMoralisQuery } from "react-moralis";
+import { contractABI, contractAddress, contractName } from "../../../contract/contractDetails";
+import { getEllipsisTxt } from "../../../helpers/formatters";
+import Address from "../../Address/Address";
+import ContractMethods from "./ContractMethods";
+
+const Contract = () => {
+    const { Moralis } = useMoralis();
+    const [responses, setResponses] = useState({});
+
+
+    /**Live query */
+    const { data } = useMoralisQuery("userDate", (query) => query, [], {
+        live: true,
+    });
+
+
+    const displayedContractFunctions = useMemo(() => {
+        if (!contractABI) return [];
+        return contractABI.filter((method) => method["type"] === "function");
+    }, [contractABI]);
+
+    const openNotification = ({ message, description }) => {
+        notification.open({
+            placement: "bottomRight",
+            message,
+            description,
+            onClick: () => {
+                console.log("Notification Clicked!");
+            },
+        });
+    };
+
+    return (
+        <div style={{ margin: "auto", display: "flex", gap: "20px", marginTop: "25", width: "70vw" }}>
+            <Card
+                title={
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        Your contract: {contractName}
+                        <Address avatar="left" copyable address={contractAddress} size={8} />
+                    </div>
+                }
+                size="large"
+                style={{
+                    width: "60%",
+                    boxShadow: "0 0.5rem 1.2rem rgb(189 197 209 / 20%)",
+                    border: "1px solid #e7eaf3",
+                    borderRadius: "0.5rem",
+                }}
+            >
+                <Form.Provider
+                    onFormFinish={async (name, { forms }) => {
+                        const params = forms[name].getFieldsValue();
+
+                        let isView = false;
+
+                        for (let method of contractABI) {
+                            if (method.name !== name) continue;
+                            if (method.stateMutability === "view") isView = true;
+                        }
+                        const options = {
+                            contractAddress,
+                            functionName: name,
+                            contractABI,
+                            msgValue: Moralis.Units.ETH(0.1),
+                            params,
+                        };
+                        console.log("params", options)
+
+                        if (!isView) {
+                            const tx = await Moralis.executeFunction({ awaitReceipt: false, ...options });
+                            tx.on("transactionHash", (hash) => {
+                                setResponses({ ...responses, [name]: { result: null, isLoading: true } });
+                                openNotification({
+                                    message: "🔊 New Transaction",
+                                    description: `${hash}`,
+                                });
+                                console.log("🔊 New Transaction", hash);
+                            })
+                                .on("receipt", (receipt) => {
+                                    setResponses({ ...responses, [name]: { result: null, isLoading: false } });
+                                    openNotification({
+                                        message: "📃 New Receipt",
+                                        description: `${receipt.transactionHash}`,
+                                    });
+                                    console.log("🔊 New Receipt: ", receipt);
+                                })
+                                .on("error", (error) => {
+                                    console.error(error);
+                                });
+                        } else {
+                            console.log("INSIDE ELSE FUNCTION", Moralis.executeFunction);
+
+                            Moralis.executeFunction(options).then((response) => {
+                                console.log("RESPONSE", response)
+                                setResponses({ ...responses, [name]: { result: response, isLoading: false } })
+                            });
+                        }
+                    }}
+                >
+                    <ContractMethods displayedContractFunctions={displayedContractFunctions} responses={responses} />
+                </Form.Provider>
+            </Card>
+            <Card
+                title={"Contract Events"}
+                size="large"
+                style={{
+                    width: "40%",
+                    boxShadow: "0 0.5rem 1.2rem rgb(189 197 209 / 20%)",
+                    border: "1px solid #e7eaf3",
+                    borderRadius: "0.5rem",
+                }}
+            >
+                {data.map((event, key) => (
+                    <Card key={key} title={"Transfer event"} size="small" style={{ marginBottom: "20px" }}>
+                        {getEllipsisTxt(event.attributes.transaction_hash, 14)}
+                    </Card>
+                ))}
+            </Card>
+        </div>
+    );
+}
+
+export default Contract

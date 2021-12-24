@@ -1,6 +1,7 @@
 import { useLocation } from "react-router";
 import { Menu } from "antd";
 import { NavLink } from "react-router-dom";
+import { RouteNames } from "../../../constants/routeNames";
 
 function MenuItems() {
     const { pathname } = useLocation();
@@ -15,17 +16,19 @@ function MenuItems() {
                 fontWeight: "500",
                 width: "100%",
                 justifyContent: "center",
+                backgroundColor: 'black',
+                border: 0
             }}
             defaultSelectedKeys={[pathname]}
         >
-            <Menu.Item key="/contract">
-                <NavLink to="/contract">🚀 Contract</NavLink>
+            <Menu.Item key={RouteNames.Admin.contract}>
+                <NavLink style={{ color: 'white' }} to={RouteNames.Admin.contract}>🚀 Contract</NavLink>
             </Menu.Item>
-            <Menu.Item key="/erc20transfers">
-                <NavLink to="/erc20transfers">💸 Transfers</NavLink>
+            <Menu.Item key={RouteNames.Admin.transfers}>
+                <NavLink style={{ color: 'white' }} to={RouteNames.Admin.transfers}>💸 Transfers</NavLink>
             </Menu.Item>
-            <Menu.Item key="/nftBalance">
-                <NavLink to="/nftBalance">🖼 NFTs</NavLink>
+            <Menu.Item key={RouteNames.Admin.NFTS}>
+                <NavLink style={{ color: 'white' }} to={RouteNames.Admin.NFTS}>🖼 NFTs</NavLink>
             </Menu.Item>
 
         </Menu>

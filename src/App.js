@@ -7,6 +7,7 @@ import {
   useRoutes,
 } from "react-router-dom";
 import AdminRoute from './components/Routes/AdminRoute';
+import { RouteNames } from './constants/routeNames';
 // const App = () => {
 //   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
 
@@ -31,7 +32,7 @@ import AdminRoute from './components/Routes/AdminRoute';
 const App = ({ isWeb3Enabled, isAuthenticated }) => {
   let routes = useRoutes([
     { path: "/", element: <MainRoute /> },
-    { path: "admin", element: <AdminRoute isWeb3Enabled={isWeb3Enabled} isAuthenticated={isAuthenticated} /> }
+    { path: "/admin/*", element: <AdminRoute isWeb3Enabled={isWeb3Enabled} isAuthenticated={isAuthenticated} /> }
   ]);
   return routes;
 };

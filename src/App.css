@@ -390,11 +390,12 @@ p{
 
 /* Footer */
 
-.hdrbtn .authButton p {
+ .authButton p {
     color: #21bf96 !important;
     margin-bottom: 0;
 }
-.hdrbtn .nativeBalanceText {
+
+.nativeBalanceText {
     margin-right: 10px;
 }
 
