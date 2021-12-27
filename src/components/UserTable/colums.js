@@ -1,5 +1,11 @@
 export const columns = [
   {
+    title: 'Token ID',
+    dataIndex: 'uid',
+    defaultSortOrder: 'descend',
+    sorter: (a, b) => a.uid - b.uid,
+  },
+  {
     title: 'Address',
     dataIndex: 'address',
     sorter: (a, b) => a.address.length - b.address.length,
@@ -25,14 +31,37 @@ export const columns = [
     title: 'Transaction Hash',
     dataIndex: 'transaction_hash',
   },
+
   {
-    title: 'Token ID',
-    dataIndex: 'uid',
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.uid - b.uid,
+    title: 'Name',
+    dataIndex: 'name',
   },
   {
-    title: 'Meta Data',
-    dataIndex: 'metaData',
+    title: 'Street Address',
+    dataIndex: 'streetAddress',
+  },
+  {
+    title: 'Country',
+    dataIndex: 'country',
+  },
+  {
+    title: 'Province',
+    dataIndex: 'province',
+  },
+  {
+    title: 'City',
+    dataIndex: 'city',
+  },
+  {
+    title: 'Postal Code',
+    dataIndex: 'postalCode',
+  },
+  {
+    title: 'Gender',
+    dataIndex: 'gender',
+  },
+  {
+    title: 'Clothing Size',
+    dataIndex: 'clothingSize',
   }
 ];
