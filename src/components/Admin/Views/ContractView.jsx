@@ -50,58 +50,16 @@ export default function Contract() {
                     borderRadius: "0.5rem",
                 }}
             >
-                <Form.Provider
-                    onFormFinish={async (name, { forms }) => {
-                        const params = forms[name].getFieldsValue();
+                {
+                    displayedContractFunctions.map((each, index) => {
+                        return (
+                            <ContractMethods
+                                title={`${index + 1}. ${each?.name}`}
 
-                        let isView = false;
-
-                        for (let method of contractABI) {
-                            if (method.name !== name) continue;
-                            if (method.stateMutability === "view") isView = true;
-                        }
-                        const options = {
-                            contractAddress,
-                            functionName: name,
-                            abi: contractABI,
-                            msgValue: Moralis.Units.ETH(0.1),
-                            params,
-                        };
-                        console.log("params", options)
-
-                        if (!isView) {
-                            const tx = await Moralis.executeFunction({ awaitReceipt: false, ...options });
-                            tx.on("transactionHash", (hash) => {
-                                setResponses({ ...responses, [name]: { result: null, isLoading: true } });
-                                openNotification({
-                                    message: "🔊 New Transaction",
-                                    description: `${hash}`,
-                                });
-                                console.log("🔊 New Transaction", hash);
-                            })
-                                .on("receipt", (receipt) => {
-                                    setResponses({ ...responses, [name]: { result: null, isLoading: false } });
-                                    openNotification({
-                                        message: "📃 New Receipt",
-                                        description: `${receipt.transactionHash}`,
-                                    });
-                                    console.log("🔊 New Receipt: ", receipt);
-                                })
-                                .on("error", (error) => {
-                                    console.error(error);
-                                });
-                        } else {
-                            console.log("INSIDE ELSE FUNCTION", options);
-                            Moralis.executeFunction(options).then((response) => {
-                                console.log("RESPONSE", response)
-                                setResponses({ ...responses, [name]: { result: response, isLoading: false } })
-                            }
-                            );
-                        }
-                    }}
-                >
-                    <ContractMethods displayedContractFunctions={displayedContractFunctions} responses={responses} />
-                </Form.Provider>
+                            />
+                        )
+                    })
+                }
             </Card>
             <Card
                 title={"Contract Events"}
