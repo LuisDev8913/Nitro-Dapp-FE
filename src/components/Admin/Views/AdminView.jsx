@@ -4,7 +4,7 @@ import AdminHeader from "./AdminHeader";
 import { Route, Routes } from "react-router";
 import { RouteNames } from "../../../constants/routeNames";
 import Contract from "./ContractView";
-
+import UserData from "./UserData"
 const Dummy = () => {
     return (
         <p style={{ backgroundColor: 'white' }}>THIS IS ROUTE</p>
@@ -17,7 +17,7 @@ const AdminView = ({ isServerInfo }) => {
             <div style={styles.content}>
                 <Routes>
                     <Route path={`/${RouteNames.Admin.contract}`} element={<Contract />} />
-                    <Route path={`/${RouteNames.Admin.transfers}`} element={<Dummy />} />
+                    <Route path={`/${RouteNames.Admin.users}`} element={<UserData />} />
                     <Route path={`/${RouteNames.Admin.NFTS}`} element={<Dummy />} />
                 </Routes>
             </div>
