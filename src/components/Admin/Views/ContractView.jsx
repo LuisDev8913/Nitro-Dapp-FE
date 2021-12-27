@@ -8,7 +8,7 @@ import { getEllipsisTxt } from "../../../helpers/formatters";
 
 export default function Contract() {
     /**Live query */
-    const { data } = useMoralisQuery("userDate", (query) => query, [], {
+    const { data } = useMoralisQuery("AAQIBNFT", (query) => query, [], {
         live: true,
     });
 

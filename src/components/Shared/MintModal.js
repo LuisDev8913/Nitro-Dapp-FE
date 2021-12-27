@@ -63,13 +63,13 @@ const MintModal = ({ isVisible, closeModal }) => {
         }
         paramObject["metaData"] = JSON.stringify({
             "name": values?.name || "",
-            "streetAddress": values?.name || "",
-            "country": values?.name || "",
-            "province": values?.name || "",
-            "city": values?.name || "",
-            "postalCode": values?.name || "",
-            "gender": values?.name || "",
-            "clothingSize": values?.name || "",
+            "streetAddress": values?.streetAddress || "",
+            "country": values?.country || "",
+            "province": values?.province || "",
+            "city": values?.city || "",
+            "postalCode": values?.postalCode || "",
+            "gender": values?.gender || "",
+            "clothingSize": values?.clothingSize || "",
         })
         const ethValue = getBalanceInWEI(values?._count * ETH_NFT_PRICE)
         executeSmartContractFunction(STATE_MUTABILITY_TYPES.payable, setMintResponse, "mint", paramObject, ethValue)

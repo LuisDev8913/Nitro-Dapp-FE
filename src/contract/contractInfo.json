@@ -1,9 +1,9 @@
 {
     "contractName": "NIFIT",
-    "contractAddress": "0x02a204c11Fb484a23B07Bc44366511B5B71873F8",
-    "transactionHash": "0x811f3a7366789b3755de05c674fa58c7dcabb7812ed33ec2bd8bd5fd427f6d1f",
+    "contractAddress": "0x32DB862D23b47238Ca81cD79A50E93F8B92bF258",
+    "transactionHash": "0x9072b214d851dfe0c7ed51b76e0a445ea4d040e3ba80cdaaf8cae939c0b9fd3d",
     "PresalePriceInETH": "0.1",
-    "MainPriceInETH": "0,1",
+    "MainPriceInETH": "0.1",
     "contractABI": [
         {
             "inputs": [
