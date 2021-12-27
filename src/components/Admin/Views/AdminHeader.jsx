@@ -9,7 +9,7 @@ const { Header } = Layout;
 const AdminHeader = () => {
     return (
         <Header style={styles.header}>
-            <img src={NitidLogo} style={{ height: '100%' }} />
+            <img src={NitidLogo} style={{ height: '100%' }} alt="NITID LOGO" />
             <MenuItems />
             <div style={styles.headerRight}>
                 <TokenPrice

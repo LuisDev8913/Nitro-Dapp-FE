@@ -1,7 +1,7 @@
 import { Button, Card, Form, Input, } from "antd";
 import Text from "antd/lib/typography/Text";
 import { useState } from "react";
-import { STATE_MUTABILITY_TYPES } from "../../../constants/enums";
+import { ETH_NFT_PRICE, STATE_MUTABILITY_TYPES } from "../../../constants/enums";
 import { getBalanceInWEI } from "../../../helpers/balanceConvertHelper";
 import { executeSmartContractFunction } from "../../../helpers/moralisHelper";
 
@@ -12,7 +12,6 @@ const ContractMethods = ({ title, formInputs, methodName, functionType }) => {
         response: null
     })
     const [form] = Form.useForm();
-
     const handleSubmit = (values) => {
         executeSmartContractFunction(functionType, setContractResponse, methodName, values, getETHValueForPayableMethod())
     }
@@ -24,7 +23,7 @@ const ContractMethods = ({ title, formInputs, methodName, functionType }) => {
     const getETHValueForPayableMethod = () => {
         if (functionType === STATE_MUTABILITY_TYPES.payable) {
             const count = form.getFieldValue("_count");
-            return getBalanceInWEI(count * 0.1)
+            return getBalanceInWEI(count * ETH_NFT_PRICE)
         }
         return null
     }

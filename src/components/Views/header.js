@@ -13,8 +13,8 @@ const Header = () => {
 
                     </div>
                     <div className="logo">
-                        <a href="#">
-                            <img src={NitidLogo} />
+                        <a href="/#">
+                            <img src={NitidLogo} alt="NITID LOGO" />
                         </a>
                     </div>
                     <div className="hdrbtn">

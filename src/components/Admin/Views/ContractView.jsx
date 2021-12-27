@@ -1,16 +1,12 @@
-import { Card, Form, notification } from "antd";
-import { useMemo, useState } from "react";
+import { Card } from "antd";
+import { useMemo } from "react";
 import { contractAddress, contractABI, contractName } from '../../../contract/contractInfo.json'
-import { useMoralis, useMoralisQuery } from "react-moralis";
+import { useMoralisQuery } from "react-moralis";
 import Address from "../../Address/Address";
 import ContractMethods from "./ContractMethods";
 import { getEllipsisTxt } from "../../../helpers/formatters";
 
 export default function Contract() {
-    const { Moralis } = useMoralis();
-    const [responses, setResponses] = useState({});
-
-
     /**Live query */
     const { data } = useMoralisQuery("userDate", (query) => query, [], {
         live: true,
@@ -20,7 +16,7 @@ export default function Contract() {
     const displayedContractFunctions = useMemo(() => {
         if (!contractABI) return [];
         return contractABI.filter((method) => method["type"] === "function");
-    }, [contractABI]);
+    }, []);
 
 
     return (

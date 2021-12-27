@@ -11,10 +11,10 @@ const Footer = () => {
                     </div>
                     <ul className="sociallinks">
                         <li>
-                            <a href="#"><BsTwitter /></a>
+                            <a href="/#"><BsTwitter /></a>
                         </li>
                         <li>
-                            <a href="#"><BsInstagram /></a>
+                            <a href="/#"><BsInstagram /></a>
                         </li>
                     </ul>
                 </div>

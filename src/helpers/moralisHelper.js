@@ -35,7 +35,11 @@ export const executeSmartContractFunction = async (functionType, setResponse, fu
             })
             .on("error", (error) => {
                 setResponse(prev => ({ ...prev, loading: false }))
-                console.log("INSIDE ERROR", error);
+                console.log("INSIDE ERROR", error.message);
+                openNotification({
+                    message: "❌ ERROR",
+                    description: `${error.message}`,
+                });
             });
     }
     else {
@@ -43,9 +47,13 @@ export const executeSmartContractFunction = async (functionType, setResponse, fu
         Moralis.executeFunction(options).then((response) => {
             setResponse(prev => ({ ...prev, loading: false, response }))
             // set loading false and response here
-        }).catch(e => {
+        }).catch(error => {
             setResponse(prev => ({ ...prev, loading: false }))
-            console.log("INSIDE ERROR", e);
+            console.log("INSIDE ERROR", error.message);
+            openNotification({
+                message: "❌ ERROR",
+                description: `${error.message}`,
+            });
         })
     }
 }

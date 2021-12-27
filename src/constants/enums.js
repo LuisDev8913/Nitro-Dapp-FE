@@ -15,3 +15,5 @@ export const STATE_MUTABILITY_TYPES = {
     "nonpayable": "nonpayable",
     "payable": "payable"
 }
+
+export const ETH_NFT_PRICE = 0.1

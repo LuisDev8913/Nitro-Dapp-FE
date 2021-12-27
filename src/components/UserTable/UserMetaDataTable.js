@@ -1,6 +1,5 @@
 
 import React from 'react'
-import { useMoralis } from "react-moralis";
 import { useMoralisQuery } from "react-moralis";
 import { Table } from 'antd';
 import { columns } from "./colums";
@@ -9,9 +8,9 @@ const UserMetaDataTable = () => {
   const { data, error, isLoading } = useMoralisQuery("userDate", (query) => query, [], {
     live: true,
   });
-  console.log(data , " GET DATA *************************** TABLE ")
+  console.log(data, " GET DATA *************************** TABLE ")
   const TableData = () => {
-    let dataSouce = data.map((row ,index) => {
+    let dataSouce = data.map((row, index) => {
       return {
         key: index,
         address: row.attributes.address,

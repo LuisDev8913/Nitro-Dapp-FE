@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useTokenPrice } from "react-moralis";
+// import { useState } from "react";
+// import { useTokenPrice } from "react-moralis";
 
 const styles = {
   token: {
@@ -14,11 +14,11 @@ const styles = {
   },
 };
 function TokenPrice(props) {
-  const { data: formattedData } = useTokenPrice(props);
+  // const { data: formattedData } = useTokenPrice(props);
 
-  const [isUSDMode, setIsUSDMode] = useState(true);
+  // const [isUSDMode, setIsUSDMode] = useState(true);
 
-  const toggleDisplayStyle = () => setIsUSDMode(!isUSDMode);
+  // const toggleDisplayStyle = () => setIsUSDMode(!isUSDMode);
 
   const noLogoToken = "https://etherscan.io/images/main/empty-token.png";
 

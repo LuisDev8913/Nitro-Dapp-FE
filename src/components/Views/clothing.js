@@ -14,7 +14,7 @@ const Clothing = () => {
                         <p>Additionally, Nitid’s clothing will offer protection from rug pulls.*</p>
                     </div>
                     <div className="img">
-                        <img src={NitidClothingImage} />
+                        <img src={NitidClothingImage} alt="NITID CLOTHING" />
                     </div>
                 </div>
             </div>

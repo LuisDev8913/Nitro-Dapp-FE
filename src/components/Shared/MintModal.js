@@ -1,26 +1,17 @@
 import React, { useState } from 'react'
-import { Button, Card, Checkbox, Form, Input, Modal, Radio, Select, Spin } from 'antd'
+import { Button, Card, Checkbox, Form, Input, Modal, Radio, Select, InputNumber } from 'antd'
 import { isRequiredMessage } from './ValidationMessages';
-import { ClothingSizeTypes, GenderTypes } from '../../constants/enums';
-
+import { ClothingSizeTypes, ETH_NFT_PRICE, GenderTypes } from '../../constants/enums';
+import { STATE_MUTABILITY_TYPES } from "../../constants/enums"
 
 import Cities from "../../JSONData/citiesData.json";
 import States from "../../JSONData/statesData.json";
 import Countries from "../../JSONData/countries.json";
+import { executeSmartContractFunction } from '../../helpers/moralisHelper';
+import { getBalanceInWEI } from '../../helpers/balanceConvertHelper';
 
 
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
-            span: 24,
-            offset: 0,
-        },
-        sm: {
-            span: 16,
-            offset: 8,
-        },
-    },
-};
+
 const formItemLayout = {
     labelCol: {
         xs: {
@@ -48,12 +39,15 @@ const MintFormLabels = {
     PostalCode: { key: "postalCode", label: "Postal Code" },
     Country: { key: "country", label: "Country" },
     Gender: { key: "gender", label: "Gender" },
-    ClothingSize: { key: "clothingSize", label: "Clothing Size" }
+    ClothingSize: { key: "clothingSize", label: "Clothing Size" },
+    Count: { key: "_count", label: "Mint Count" }
 }
 
 const MintModal = ({ isVisible, closeModal }) => {
-
-
+    const [mintResponse, setMintResponse] = useState({
+        loading: false,
+        response: null
+    })
     const { Option } = Select;
 
     const provincesData = States;
@@ -64,7 +58,21 @@ const MintModal = ({ isVisible, closeModal }) => {
     const [form] = Form.useForm();
     const [isInfoChecked, setIsInfoCheck] = useState(false)
     const onFinish = (values) => {
-        console.log("values", values)
+        const paramObject = {
+            _count: values?._count,
+        }
+        paramObject["metaData"] = JSON.stringify({
+            "name": values?.name || "",
+            "streetAddress": values?.name || "",
+            "country": values?.name || "",
+            "province": values?.name || "",
+            "city": values?.name || "",
+            "postalCode": values?.name || "",
+            "gender": values?.name || "",
+            "clothingSize": values?.name || "",
+        })
+        const ethValue = getBalanceInWEI(values?._count * ETH_NFT_PRICE)
+        executeSmartContractFunction(STATE_MUTABILITY_TYPES.payable, setMintResponse, "mint", paramObject, ethValue)
     }
 
     const [country, setCountry] = useState(null);
@@ -86,6 +94,8 @@ const MintModal = ({ isVisible, closeModal }) => {
     const isInfoFieldsDisabled = () => {
         return !isInfoChecked
     }
+
+
 
     return (
         <Modal
@@ -239,11 +249,27 @@ const MintModal = ({ isVisible, closeModal }) => {
                             <Radio.Button value={ClothingSizeTypes.ExtraLarge}>{ClothingSizeTypes.ExtraLarge}</Radio.Button>
                         </Radio.Group>
                     </Form.Item>
-                    <Form.Item wrapperCol={{ span: 12, offset: 6 }}>
-                        <Button type="primary" htmlType="submit">
-                            Submit
+                    <Form.Item
+                        name={MintFormLabels.Count.key}
+                        label={MintFormLabels.Count.label}
+                        rules={[{
+                            required: true,
+                            message: isRequiredMessage(MintFormLabels.Count.label),
+                        }
+
+                        ]}
+                    >
+                        <Form.Item initialValue={1} name={MintFormLabels.Count.key} noStyle>
+                            <InputNumber min={1} max={2} />
+                        </Form.Item>
+                        <span className="ant-form-text"> Only 2 NFTs are allowed be MINT</span>
+                    </Form.Item>
+                    <Form.Item >
+                        <Button loading={mintResponse.loading} type="primary" htmlType="submit">
+                            MINT
                         </Button>
                     </Form.Item>
+
                 </Form>
             </Card>
         </Modal >

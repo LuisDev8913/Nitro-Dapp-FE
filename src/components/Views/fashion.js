@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import { useMoralis } from "react-moralis";
-import { useMoralisQuery } from "react-moralis";
 import { FashionNFTImage } from "../../assets/img/index"
 import MintModal from "../Shared/MintModal";
 const Fashion = () => {
     const [isMintModalVisible, setIsMintModalVisible] = useState(false)
-    const { Moralis } = useMoralis()
-    const { data } = useMoralisQuery("userDate", (query) => query, [], {
-        live: true,
-    });
+
 
     const toggleModal = () => {
         setIsMintModalVisible(prev => !prev)
@@ -30,7 +25,7 @@ const Fashion = () => {
                 <div className="container">
                     <div className="s-row">
                         <div className="img">
-                            <img src={FashionNFTImage} />
+                            <img src={FashionNFTImage} alt="NITID FASHION" />
                         </div>
                         <div className="content-box">
                             <h3>Nitid's Exclusive Fashion NFTs</h3>
