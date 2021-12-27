@@ -400,5 +400,6 @@ p{
 }
 
 .modalText {
-    color: black !important
+    color: black !important;
+    margin-bottom: 0;
 }

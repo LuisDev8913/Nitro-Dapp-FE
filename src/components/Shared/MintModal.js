@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button, Card, Checkbox, Form, Input, Modal, Radio, Select, InputNumber } from 'antd'
 import { isRequiredMessage } from './ValidationMessages';
 import { ClothingSizeTypes, ETH_NFT_PRICE, GenderTypes } from '../../constants/enums';
@@ -9,8 +9,7 @@ import States from "../../JSONData/statesData.json";
 import Countries from "../../JSONData/countries.json";
 import { executeSmartContractFunction } from '../../helpers/moralisHelper';
 import { getBalanceInWEI } from '../../helpers/balanceConvertHelper';
-
-
+import DappContext from '../../context';
 
 const formItemLayout = {
     labelCol: {
@@ -44,6 +43,8 @@ const MintFormLabels = {
 }
 
 const MintModal = ({ isVisible, closeModal }) => {
+    const { getUserSmartContractInfo, smartContractInfo } = useContext(DappContext);
+    console.log("smartContractInfo", smartContractInfo)
     const [mintResponse, setMintResponse] = useState({
         loading: false,
         response: null
@@ -72,7 +73,11 @@ const MintModal = ({ isVisible, closeModal }) => {
             "clothingSize": values?.clothingSize || "",
         })
         const ethValue = getBalanceInWEI(values?._count * ETH_NFT_PRICE)
-        executeSmartContractFunction(STATE_MUTABILITY_TYPES.payable, setMintResponse, "mint", paramObject, ethValue)
+        executeSmartContractFunction(STATE_MUTABILITY_TYPES.payable, setMintResponse, "mint", paramObject, ethValue).then(res => {
+            if (getUserSmartContractInfo) {
+                getUserSmartContractInfo()
+            }
+        })
     }
 
     const [country, setCountry] = useState(null);
@@ -249,20 +254,19 @@ const MintModal = ({ isVisible, closeModal }) => {
                             <Radio.Button value={ClothingSizeTypes.ExtraLarge}>{ClothingSizeTypes.ExtraLarge}</Radio.Button>
                         </Radio.Group>
                     </Form.Item>
+                    <span
+                        className="ant-form-text"> Only 2 NFTs are allowed be MINT</span>
+
                     <Form.Item
-                        name={MintFormLabels.Count.key}
                         label={MintFormLabels.Count.label}
+                        initialValue={1}
+                        name={MintFormLabels.Count.key}
                         rules={[{
                             required: true,
                             message: isRequiredMessage(MintFormLabels.Count.label),
-                        }
-
-                        ]}
+                        }]}
                     >
-                        <Form.Item initialValue={1} name={MintFormLabels.Count.key} noStyle>
-                            <InputNumber min={1} max={2} />
-                        </Form.Item>
-                        <span className="ant-form-text"> Only 2 NFTs are allowed be MINT</span>
+                        <InputNumber min={1} max={2} />
                     </Form.Item>
                     <Form.Item >
                         <Button loading={mintResponse.loading} type="primary" htmlType="submit">

@@ -8,7 +8,6 @@ const UserMetaDataTable = () => {
   const { data, error, isLoading } = useMoralisQuery("userDate", (query) => query, [], {
     live: true,
   });
-  console.log(data, " GET DATA *************************** TABLE ")
   const TableData = () => {
     let dataSouce = data.map((row, index) => {
       return {

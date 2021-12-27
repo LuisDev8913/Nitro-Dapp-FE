@@ -52,6 +52,10 @@ const ContractMethods = ({ title, formInputs, methodName, functionType }) => {
                     <Button type="primary" htmlType="submit" disabled={contractResponse.loading} loading={contractResponse.loading}  >
                         {isReadFunction() ? "Read🔎" : "Transact💸"}
                     </Button>
+                    {
+                        (functionType === STATE_MUTABILITY_TYPES.payable || functionType === STATE_MUTABILITY_TYPES.nonpayable) &&
+                        <span>GAS FEES MAY APPLY</span>
+                    }
                 </Form.Item>
             </Form>
         </Card>

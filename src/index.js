@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { MoralisProvider } from "react-moralis";
 import 'antd/dist/antd.css';
+import DappContextProvider from './providers/ContextProvider';
 // const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
 // const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
 
@@ -14,7 +15,9 @@ const Application = () => {
   if (isServerInfo)
     return (
       <MoralisProvider appId={"RtQco05HayIYAhZXc3maTILtMfirge8oQdIpLDAT"} serverUrl={"https://xaoyohpuz2zk.usemoralis.com:2053/server"}>
-        <App isServerInfo />
+        <DappContextProvider>
+          <App isServerInfo />
+        </DappContextProvider>
       </MoralisProvider>
     );
   else {

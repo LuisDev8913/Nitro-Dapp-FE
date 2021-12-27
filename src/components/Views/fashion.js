@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import { Button } from "antd";
+import React, { useContext, useState } from "react";
 import { FashionNFTImage } from "../../assets/img/index"
+import DappContext from "../../context";
 import MintModal from "../Shared/MintModal";
 const Fashion = () => {
     const [isMintModalVisible, setIsMintModalVisible] = useState(false)
+    const { smartContractInfo } = useContext(DappContext);
 
 
     const toggleModal = () => {
@@ -13,6 +16,9 @@ const Fashion = () => {
         setIsMintModalVisible(false)
     }
 
+    const isMintButtonDisabled = () => {
+        return Number(smartContractInfo.balanceOf) >= 2;
+    }
 
 
     return (
@@ -31,7 +37,13 @@ const Fashion = () => {
                             <h3>Nitid's Exclusive Fashion NFTs</h3>
                             <p>2,400 NFTs will be minted from the genesis collection. Each NFT will come with a luxury sweatshirt created from the design in your size.</p>
                             <p>Not only will you receive an NFT design and physical version, but each NFT will grant exclusive or early access to every future Nitid launch that will only increase in value over time. </p>
-                            <button onClick={toggleModal}>Mint Coming Soon</button>
+                            <Button
+                                style={{ fontFamily: 'Cinzel' }}
+                                disabled={isMintButtonDisabled() || smartContractInfo.loading}
+                                loading={smartContractInfo.loading}
+                                onClick={toggleModal}>
+                                {`MINT ${isMintButtonDisabled() && !smartContractInfo.loading ? "REACHED LIMIT" : ''}`}
+                            </Button>
                         </div>
                     </div>
                 </div>
