@@ -9,3 +9,9 @@ export const ClothingSizeTypes = {
     "Large": "L",
     "ExtraLarge": "XL"
 }
+
+export const STATE_MUTABILITY_TYPES = {
+    "view": "view",
+    "nonpayable": "nonpayable",
+    "payable": "payable"
+}

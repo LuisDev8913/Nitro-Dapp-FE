@@ -22,16 +22,6 @@ export default function Contract() {
         return contractABI.filter((method) => method["type"] === "function");
     }, [contractABI]);
 
-    const openNotification = ({ message, description }) => {
-        notification.open({
-            placement: "bottomRight",
-            message,
-            description,
-            onClick: () => {
-                console.log("Notification Clicked!");
-            },
-        });
-    };
 
     return (
         <div style={{ margin: "auto", display: "flex", gap: "20px", marginTop: "25", width: "70vw" }}>
@@ -55,7 +45,10 @@ export default function Contract() {
                         return (
                             <ContractMethods
                                 title={`${index + 1}. ${each?.name}`}
-
+                                formInputs={each?.inputs}
+                                methodName={each?.name}
+                                functionType={each?.stateMutability}
+                                key={index}
                             />
                         )
                     })

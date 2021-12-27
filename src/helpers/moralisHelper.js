@@ -1,19 +1,20 @@
-import { useMoralis } from "react-moralis";
 import { contractABI, contractAddress } from "../contract/contractDetails"
 import { openNotification } from "./notificationHelper";
-export const executeSmartContractFunction = (isReadFunction = true, setResponse, functionName, functionParams, ethValue = null) => {
-    const { Moralis } = useMoralis();
+import { Moralis } from 'moralis'
+import { STATE_MUTABILITY_TYPES } from "../constants/enums";
+export const executeSmartContractFunction = async (functionType, setResponse, functionName, functionParams, ethValue = null) => {
     let options = {
         contractAddress,
         functionName,
         abi: contractABI,
         params: functionParams,
     };
-    if (!isReadFunction) {
+    if (functionType === STATE_MUTABILITY_TYPES.payable || functionType === STATE_MUTABILITY_TYPES.nonpayable) {
         options["awaitReceipt"] = false;
-        options["msgValue"] = ethValue
-        console.log("INSIDE WRITE FUNCTION CONDITION");
-
+        if (functionType === STATE_MUTABILITY_TYPES.payable) {
+            options["msgValue"] = ethValue
+        }
+        setResponse(prev => ({ ...prev, loading: true }))
         const tx = await Moralis.executeFunction({ awaitReceipt: false, ...options });
         tx.on("transactionHash", (hash) => {
             // loading true here
@@ -25,6 +26,7 @@ export const executeSmartContractFunction = (isReadFunction = true, setResponse,
         })
             .on("receipt", (receipt) => {
                 // loading false here
+                setResponse(prev => ({ ...prev, loading: false, response: `📃 New Receipt ${receipt.transactionHash}` }))
                 openNotification({
                     message: "📃 New Receipt",
                     description: `${receipt.transactionHash}`,
@@ -32,14 +34,18 @@ export const executeSmartContractFunction = (isReadFunction = true, setResponse,
                 console.log("🔊 New Receipt: ", receipt);
             })
             .on("error", (error) => {
-                console.error(error);
+                setResponse(prev => ({ ...prev, loading: false }))
+                console.log("INSIDE ERROR", error);
             });
     }
     else {
-        console.log("INSIDE READ FUNCTION LOGIC")
+        setResponse(prev => ({ ...prev, loading: true }))
         Moralis.executeFunction(options).then((response) => {
-            console.log("RESPONSE", response)
+            setResponse(prev => ({ ...prev, loading: false, response }))
             // set loading false and response here
+        }).catch(e => {
+            setResponse(prev => ({ ...prev, loading: false }))
+            console.log("INSIDE ERROR", e);
         })
     }
 }
