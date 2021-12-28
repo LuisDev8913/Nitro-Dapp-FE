@@ -1,10 +1,17 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { NitidLogo } from "../../assets/img";
+import { RouteNames } from "../../constants/routeNames";
+import useSmartContractOwner from "../../hooks/useSmartContractOwner";
 import Account from "../Account/Account";
 import NativeBalance from "../NativeBalance/NativeBalance";
+import Loading from "../Shared/Loading";
 import TokenPrice from "../TokenPrice";
 
 const Header = () => {
+    const { smartContractOwnerInfo } = useSmartContractOwner()
+
+
     return (
         <div className="header">
             <div className="container-fluid">
@@ -17,7 +24,13 @@ const Header = () => {
                             <img src={NitidLogo} alt="NITID LOGO" />
                         </a>
                     </div>
+
                     <div className="hdrbtn">
+                        {
+                            smartContractOwnerInfo.loading ? <Loading /> :
+                                smartContractOwnerInfo.isCurrentUserOwner ?
+                                    <NavLink style={{ color: 'white' }} to={RouteNames.Admin.admin} >🚀 GO TO ADMIN PANEL</NavLink> : <></>
+                        }
                         <TokenPrice
                             address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
                             chain="eth"

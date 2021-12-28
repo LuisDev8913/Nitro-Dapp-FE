@@ -43,8 +43,7 @@ const MintFormLabels = {
 }
 
 const MintModal = ({ isVisible, closeModal }) => {
-    const { getUserSmartContractInfo, smartContractInfo } = useContext(DappContext);
-    console.log("smartContractInfo", smartContractInfo)
+    const { getUserSmartContractInfo } = useContext(DappContext);
     const [mintResponse, setMintResponse] = useState({
         loading: false,
         response: null

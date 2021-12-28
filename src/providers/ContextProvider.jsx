@@ -10,14 +10,40 @@ const smartContractFunctions = [
         id: 1,
         functionName: "owner",
         functionType: STATE_MUTABILITY_TYPES.view,
-        params: null
+        params: false
     },
     {
         id: 2,
         functionName: "balanceOf",
         functionType: STATE_MUTABILITY_TYPES.view,
-        params: "address"
+        key: "owner",
+        params: true
     },
+    {
+        id: 3,
+        functionName: "currentSalesRound",
+        functionType: STATE_MUTABILITY_TYPES.view,
+        params: false
+    },
+    {
+        id: 4,
+        functionName: "whitelisted",
+        functionType: STATE_MUTABILITY_TYPES.view,
+        key: "",
+        params: true
+    },
+    {
+        id: 5,
+        functionName: "totalSupply",
+        functionType: STATE_MUTABILITY_TYPES.view,
+        params: false
+    },
+    {
+        id: 6,
+        functionName: "MAX_ELEMENTS",
+        functionType: STATE_MUTABILITY_TYPES.view,
+        params: false
+    }
 ]
 
 const DappContextProvider = ({ children }) => {
@@ -37,11 +63,18 @@ const DappContextProvider = ({ children }) => {
             getUserSmartContractInfo()
         }
         // eslint-disable-next-line
-    }, [isWeb3Enabled, isAuthenticated, isWeb3EnableLoading, isFetched])
+    }, [isWeb3Enabled, isAuthenticated, isWeb3EnableLoading, isFetched]);
+
+    const getParams = (paramName) => {
+        let paramsObject = {};
+        paramsObject[`${paramName}`] = account.toString();
+        return paramsObject;
+    }
+
     const getUserSmartContractInfo = () => {
         if (isWeb3Enabled && isAuthenticated && !isWeb3EnableLoading && !isFetched) {
             Promise.all(smartContractFunctions.map(each => {
-                return executeSmartContractFunction(each.functionType, setSmartContractInfo, each.functionName, each.params ? { owner: account.toString() } : []);
+                return executeSmartContractFunction(each.functionType, setSmartContractInfo, each.functionName, each.params ? getParams(each.key) : []);
             })).then(res => {
                 setIsFetched(true)
             }).catch(e => {

@@ -17,7 +17,13 @@ export const STATE_MUTABILITY_TYPES = {
 }
 
 export const ETH_NFT_PRICE = 0.1;
+
 export const SOCIAL_LINKS = {
     "TWITTER": "https://twitter.com/",
     "INSTAGRAM": "https://www.instagram.com/"
+}
+
+export const SALES_ROUNDS = {
+    "MAIN": "MAIN",
+    "PRESALE": "PRESALE"
 }

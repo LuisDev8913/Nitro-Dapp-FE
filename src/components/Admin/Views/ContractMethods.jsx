@@ -1,4 +1,5 @@
-import { Button, Card, Form, Input, } from "antd";
+import { InfoCircleOutlined } from "@ant-design/icons/lib/icons";
+import { Button, Card, Form, Input, Tooltip, } from "antd";
 import Text from "antd/lib/typography/Text";
 import { useState } from "react";
 import { ETH_NFT_PRICE, STATE_MUTABILITY_TYPES } from "../../../constants/enums";
@@ -28,8 +29,16 @@ const ContractMethods = ({ title, formInputs, methodName, functionType }) => {
         return null
     }
 
+    const RenderToolTip = () => {
+        return (
+            <Tooltip title={methodName}>
+                <InfoCircleOutlined />
+            </Tooltip>
+        )
+    }
+
     return (
-        <Card title={title} size="small" style={{ marginBottom: "20px" }}>
+        <Card extra={<RenderToolTip />} title={title} size="small" style={{ marginBottom: "20px" }}>
             <Form name={methodName} form={form} layout="vertical" onFinish={handleSubmit}>
                 {formInputs?.map((input, key) => (
                     <Form.Item
@@ -44,7 +53,7 @@ const ContractMethods = ({ title, formInputs, methodName, functionType }) => {
                 ))}
                 <Form.Item style={{ marginBottom: "5px" }}>
                     {
-                        contractResponse.response &&
+                        contractResponse.response !== null &&
                         <Text style={{ display: "block" }}>
                             {`Response: ${JSON.stringify(contractResponse.response)}`}
                         </Text>
