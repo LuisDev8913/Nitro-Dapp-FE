@@ -13,7 +13,7 @@ const MultiTagInput = ({ data, updateData, formKey, validateAddItem, loading }) 
         if (e.target.value) {
             let targetValue = e.target.value;
             if (value.find(each => each.toLowerCase() === targetValue.toLowerCase())) {
-                message.error('DOBARA MAT DAAL BHARWE');
+                message.error(`${targetValue} already exists`);
                 setValueInput('')
                 return;
             }
