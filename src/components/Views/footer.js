@@ -1,7 +1,13 @@
 import React from "react";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
+import { SOCIAL_LINKS } from "../../constants/enums";
+import { redirectToWebPage } from "../../utils/commonUtil";
 
 const Footer = () => {
+    const handleRedirection = (e, link) => {
+        e.preventDefault();
+        redirectToWebPage(link)
+    }
     return (
         <div className="footer">
             <div className="container">
@@ -11,10 +17,10 @@ const Footer = () => {
                     </div>
                     <ul className="sociallinks">
                         <li>
-                            <a href="/#"><BsTwitter /></a>
+                            <a onClick={e => handleRedirection(e, SOCIAL_LINKS.TWITTER)} href="/#"><BsTwitter /></a>
                         </li>
                         <li>
-                            <a href="/#"><BsInstagram /></a>
+                            <a onClick={e => handleRedirection(e, SOCIAL_LINKS.INSTAGRAM)} href="/#"><BsInstagram /></a>
                         </li>
                     </ul>
                 </div>
