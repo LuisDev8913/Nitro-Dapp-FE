@@ -1,13 +1,10 @@
 import { useMoralis } from "react-moralis";
 import { getEllipsisTxt } from "../../helpers/formatters";
-import { Button, Card, Modal } from "antd";
-import Address from "../Address/Address"
 import { useState } from "react";
-import { SelectOutlined } from "@ant-design/icons";
-import { getExplorer } from "../../helpers/networks";
-import Text from "antd/lib/typography/Text";
-import { connectors } from "./config";
 import Blockie from "../Blockie";
+import { useMetaMaskConnection } from "../../hooks";
+import NoMetaMaskModal from "../Shared/NoMetaMaskModal";
+import AccountInfoModal from "../Shared/AccountInfoModal";
 const styles = {
   account: {
     height: "42px",
@@ -44,10 +41,21 @@ const styles = {
 };
 
 function Account() {
-  const { authenticate, isAuthenticated, logout } = useMoralis();
-  const { account, chainId } = useMoralis();
+  const { isMetaMaskInstalled } = useMetaMaskConnection()
+  const { authenticate, isAuthenticated, logout, chainId, account } = useMoralis();
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
+  const [isMetaMaskModalVisible, setIsMetaMaskModalVisible] = useState(false);
+
+  const handleWalletConnect = () => {
+    if (!isMetaMaskInstalled) {
+      setIsMetaMaskModalVisible(true)
+    }
+    authenticate({ signingMessage: "Connect with Gift Workshop Society" })
+  }
+
+  const closeMetaMaskModal = () => {
+    setIsMetaMaskModalVisible(false)
+  }
 
   if (!isAuthenticated) {
     return (
@@ -55,49 +63,22 @@ function Account() {
         <div
           style={styles.account}
           className="authButton"
-          // onClick={() => authenticate({ signingMessage: "Hello World!" })}
-          onClick={() => setIsAuthModalVisible(true)}
+          onClick={handleWalletConnect}
         >
           <p style={styles.text}>Authenticate</p>
         </div>
-        <Modal
-          visible={isAuthModalVisible}
-          footer={null}
-          onCancel={() => setIsAuthModalVisible(false)}
-          bodyStyle={{
-            padding: "15px",
-            fontSize: "17px",
-            fontWeight: "500",
-          }}
-          style={{ fontSize: "16px", fontWeight: "500" }}
-          width="340px"
-        >
-          <div className="authButton" style={{ padding: "10px", display: "flex", justifyContent: "center", fontWeight: "700", fontSize: "20px" }}>
-            Connect Wallet
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-            {connectors.map(({ title, icon, connectorId }, key) => (
-              <div
-                style={styles.connector}
-                key={key}
-                onClick={async () => {
-                  try {
-                    await authenticate({ provider: connectorId });
-                    window.localStorage.setItem("connectorId", connectorId);
-                    setIsAuthModalVisible(false);
-                  } catch (e) {
-                    console.error(e);
-                  }
-                }}
-              >
-                <img src={icon} alt={title} style={styles.icon} />
-                <Text style={{ fontSize: "14px" }}>{title}</Text>
-              </div>
-            ))}
-          </div>
-        </Modal>
+        <NoMetaMaskModal
+          isModalVisible={isMetaMaskModalVisible}
+          closeModal={closeMetaMaskModal}
+          chainId={chainId}
+          account={account}
+          logout={logout}
+        />
       </>
     );
+  }
+  const closeModal = () => {
+    setIsModalVisible(false)
   }
 
   return (
@@ -106,53 +87,13 @@ function Account() {
         <p style={{ marginRight: "5px", ...styles.text }}>{getEllipsisTxt(account, 6)}</p>
         <Blockie currentWallet scale={3} />
       </div>
-      <Modal
-        visible={isModalVisible}
-        footer={null}
-        onCancel={() => setIsModalVisible(false)}
-        bodyStyle={{
-          padding: "15px",
-          fontSize: "17px",
-          fontWeight: "500",
-        }}
-        style={{ fontSize: "16px", fontWeight: "500" }}
-        width="400px"
-      >
-        Account
-        <Card
-          style={{
-            marginTop: "10px",
-            borderRadius: "1rem",
-          }}
-          bodyStyle={{ padding: "15px" }}
-        >
-          <Address avatar="left" size={6} copyable style={{ fontSize: "20px" }} />
-          <div style={{ marginTop: "10px", padding: "0 10px" }}>
-            <a href={`${getExplorer(chainId)}/address/${account}`} target="_blank" rel="noreferrer">
-              <SelectOutlined style={{ marginRight: "5px" }} />
-              View on Explorer
-            </a>
-          </div>
-        </Card>
-        <Button
-          size="large"
-          type="primary"
-          style={{
-            width: "100%",
-            marginTop: "10px",
-            borderRadius: "0.5rem",
-            fontSize: "16px",
-            fontWeight: "500",
-          }}
-          onClick={async () => {
-            await logout();
-            window.localStorage.removeItem("connectorId");
-            setIsModalVisible(false);
-          }}
-        >
-          Disconnect Wallet
-        </Button>
-      </Modal>
+      <AccountInfoModal
+        isModalVisible={isModalVisible}
+        closeModal={closeModal}
+        chainId={chainId}
+        account={account}
+        logout={logout}
+      />
     </>
   );
 }
