@@ -1,83 +1,7 @@
 export const SmartContractAdminABI = [
-    {
-        "inputs": [
-            {
-                "internalType": "string",
-                "name": "baseURI",
-                "type": "string"
-            }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "approved",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "Approval",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "operator",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "internalType": "bool",
-                "name": "approved",
-                "type": "bool"
-            }
-        ],
-        "name": "ApprovalForAll",
-        "type": "event"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "approve",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
+
+
+
     {
         "inputs": [
             {
@@ -89,26 +13,10 @@ export const SmartContractAdminABI = [
         "name": "batchWhitelist",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
+        "type": "function",
+        "desc":"This Function will add Address to the  WhiteList Users"
     },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_count",
-                "type": "uint256"
-            },
-            {
-                "internalType": "string",
-                "name": "metaData",
-                "type": "string"
-            }
-        ],
-        "name": "mint",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-    },
+   
     {
         "inputs": [
             {
@@ -125,209 +33,58 @@ export const SmartContractAdminABI = [
         "name": "mintForOwner",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
+        "type": "function",
+        "desc":"This Function will use for minting without using NFT Price (Restricted to Owner Only)"
     },
+
     {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "id",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "string",
-                "name": "metaData",
-                "type": "string"
-            },
-            {
-                "indexed": false,
-                "internalType": "address",
-                "name": "mintOwnerAddress",
-                "type": "address"
-            }
-        ],
-        "name": "NitidMintEvent",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "previousOwner",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "newOwner",
-                "type": "address"
-            }
-        ],
-        "name": "OwnershipTransferred",
-        "type": "event"
+        "inputs": [],
+        "name": "pause",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "desc":"This Function will pause the minting process of Smart Contract"
     },
     {
         "inputs": [],
         "name": "renounceOwnership",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
+        "type": "function",
+        "desc":"This Function will Renounce your OWNERSHIP with Smart Contract"
     },
     {
         "inputs": [
             {
-                "internalType": "address",
-                "name": "from",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
+                "internalType": "string",
+                "name": "baseURI",
+                "type": "string"
             }
         ],
-        "name": "safeTransferFrom",
+        "name": "reveal",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
+        "type": "function",
+        "desc":"This Function will change Base URL for NFTs"
     },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "from",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "bytes",
-                "name": "_data",
-                "type": "bytes"
-            }
-        ],
-        "name": "safeTransferFrom",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "operator",
-                "type": "address"
-            },
-            {
-                "internalType": "bool",
-                "name": "approved",
-                "type": "bool"
-            }
-        ],
-        "name": "setApprovalForAll",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
+
+
+ 
     {
         "inputs": [],
         "name": "setSalesRoundMain",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
+        "type": "function",
+        "desc":"This Function will set the Current Sales Round as MAIN"
     },
     {
         "inputs": [],
         "name": "setSalesRoundPreSale",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "amount",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "string",
-                "name": "name",
-                "type": "string"
-            },
-            {
-                "indexed": false,
-                "internalType": "address",
-                "name": "account",
-                "type": "address"
-            }
-        ],
-        "name": "TestEvent",
-        "type": "event"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "amount",
-                "type": "uint256"
-            },
-            {
-                "internalType": "string",
-                "name": "name",
-                "type": "string"
-            }
-        ],
-        "name": "TestFunction",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "from",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "Transfer",
-        "type": "event"
+        "type": "function",
+        "desc":"This Function will set the Current Sales Round as PRESALE"
     },
     {
         "inputs": [
@@ -347,11 +104,14 @@ export const SmartContractAdminABI = [
                 "type": "uint256"
             }
         ],
-        "name": "transferFrom",
+        "name": "tranferToken",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
+        "type": "function",
+        "desc":"To tranfer the token another valid address."
     },
+
+
     {
         "inputs": [
             {
@@ -363,40 +123,26 @@ export const SmartContractAdminABI = [
         "name": "transferOwnership",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
+        "type": "function",
+        "desc":"To tranfer the OWNERSHIP of Smart Contract another valid address."
     },
+    {
+        "inputs": [],
+        "name": "unpause",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "desc":"To Resume to MINTING process if paused."
+    },
+
+
     {
         "inputs": [],
         "name": "withdrawAll",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "_currentSalesRound",
-        "outputs": [
-            {
-                "internalType": "string",
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "_tokenIdTracker",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "_value",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"To withdraw all Smart Contract Funds into Owner's Wallet (Restricted to OWNER only)"
     },
     {
         "inputs": [
@@ -415,7 +161,8 @@ export const SmartContractAdminABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"Returns the number of tokens of a provided wallet address."
     },
     {
         "inputs": [],
@@ -428,7 +175,8 @@ export const SmartContractAdminABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"Returns the BASE URL for NFTs"
     },
     {
         "inputs": [],
@@ -441,41 +189,18 @@ export const SmartContractAdminABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "getApproved",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"This function will return CURRENT SALES ROUND (PRESALE/MAIN)"
     },
     {
         "inputs": [
             {
                 "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "operator",
+                "name": "_address",
                 "type": "address"
             }
         ],
-        "name": "isApprovedForAll",
+        "name": "isWhitelisted",
         "outputs": [
             {
                 "internalType": "bool",
@@ -484,7 +209,8 @@ export const SmartContractAdminABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"Returns if the provided wallet address is whitelisted for PRESALE Minting."
     },
     {
         "inputs": [],
@@ -497,32 +223,10 @@ export const SmartContractAdminABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"Returns MAX number of NFT tokens to be minted."
     },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_owner",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_count",
-                "type": "uint256"
-            }
-        ],
-        "name": "mintingAvailableCurrentSalesRound",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
+  
     {
         "inputs": [],
         "name": "name",
@@ -534,7 +238,8 @@ export const SmartContractAdminABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"Returns Name of Contract"
     },
     {
         "inputs": [],
@@ -547,7 +252,8 @@ export const SmartContractAdminABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"Returns wallet address of Owner."
     },
     {
         "inputs": [
@@ -566,7 +272,22 @@ export const SmartContractAdminABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"Returns Wallet Address of provided Token number"
+    },
+    {
+        "inputs": [],
+        "name": "paused",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "desc":"Returns if the MINTING Process is Paused."
     },
     {
         "inputs": [
@@ -585,27 +306,10 @@ export const SmartContractAdminABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"Returns price of NFT per count"
     },
-    {
-        "inputs": [
-            {
-                "internalType": "bytes4",
-                "name": "interfaceId",
-                "type": "bytes4"
-            }
-        ],
-        "name": "supportsInterface",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
+  
     {
         "inputs": [],
         "name": "symbol",
@@ -617,69 +321,8 @@ export const SmartContractAdminABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "index",
-                "type": "uint256"
-            }
-        ],
-        "name": "tokenByIndex",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "index",
-                "type": "uint256"
-            }
-        ],
-        "name": "tokenOfOwnerByIndex",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "tokenURI",
-        "outputs": [
-            {
-                "internalType": "string",
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"Returns Smart Contract Symbol"
     },
     {
         "inputs": [],
@@ -692,38 +335,27 @@ export const SmartContractAdminABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "totalToken",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"Returns Total Supply for NFTs minted till yet."
     },
     {
         "inputs": [
             {
                 "internalType": "address",
-                "name": "",
+                "name": "_owner",
                 "type": "address"
             }
         ],
-        "name": "whitelisted",
+        "name": "walletOfOwner",
         "outputs": [
             {
-                "internalType": "bool",
+                "internalType": "uint256[]",
                 "name": "",
-                "type": "bool"
+                "type": "uint256[]"
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "desc":"Returns token numbers of provided wallet address"
     }
 ]

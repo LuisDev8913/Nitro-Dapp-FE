@@ -27,10 +27,6 @@ function MenuItems() {
             <Menu.Item key={RouteNames.Admin.users}>
                 <NavLink style={{ color: 'white' }} to={RouteNames.Admin.users}>💸 User Data</NavLink>
             </Menu.Item>
-            <Menu.Item key={RouteNames.Admin.NFTS}>
-                <NavLink style={{ color: 'white' }} to={RouteNames.Admin.NFTS}>🖼 NFTs</NavLink>
-            </Menu.Item>
-
         </Menu>
     );
 }

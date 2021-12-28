@@ -25,7 +25,7 @@ const Fashion = () => {
             obj.text = "SOLD OUT";
             obj.buttonDisabled = true;
         }
-        else if (smartContractInfo.currentSalesRound === SALES_ROUNDS.PRESALE && !smartContractInfo.whitelisted) {
+        else if (smartContractInfo.currentSalesRound === SALES_ROUNDS.PRESALE && !smartContractInfo.isWhitelisted) {
             obj.text = "COMING SOON";
             obj.buttonDisabled = true;
         }
