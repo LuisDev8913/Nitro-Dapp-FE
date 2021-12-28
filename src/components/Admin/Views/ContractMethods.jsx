@@ -1,14 +1,21 @@
 import { InfoCircleOutlined } from "@ant-design/icons/lib/icons";
-import { Button, Card, Form, Input, Tooltip, } from "antd";
+import { Button, Card, Form, Input, message, Tooltip, } from "antd";
 import Text from "antd/lib/typography/Text";
 import { useState } from "react";
 import { ETH_NFT_PRICE, STATE_MUTABILITY_TYPES } from "../../../constants/enums";
 import { getBalanceInWEI } from "../../../helpers/balanceConvertHelper";
+import { getEllipsisTxt } from "../../../helpers/formatters";
 import { executeSmartContractFunction } from "../../../helpers/moralisHelper";
+import { isValidAddress } from "../../../utils/web3Util";
+import MultiTagInput from "../../Shared/MultiTagInput/MultiTagInput";
 
 const ContractMethods = ({ title, formInputs, methodName, functionType }) => {
-
+    const [userAddressArray, setUserAddressArray] = useState([]);
     const [contractResponse, setContractResponse] = useState({
+        loading: false,
+        response: null
+    })
+    const [whiteListResponse, setWhiteListResponse] = useState({
         loading: false,
         response: null
     })
@@ -37,6 +44,29 @@ const ContractMethods = ({ title, formInputs, methodName, functionType }) => {
         )
     }
 
+    const updateUserAddressArray = (newData, formKey) => {
+        const clone = [...newData];
+        setUserAddressArray(clone);
+        form.setFieldsValue({ [`${formKey}`]: clone });
+    }
+
+    const validateNewAddressItem = async (addressString) => {
+        let isValid = isValidAddress(addressString);
+        if (!isValid) {
+            message.error(`${addressString} is not valid ETH Address`);
+            return false;
+        }
+        else {
+            let isAlreadyWhiteList = await executeSmartContractFunction(STATE_MUTABILITY_TYPES.view, setWhiteListResponse, "whitelisted", { "": addressString });
+            if (isAlreadyWhiteList) {
+                message.error(`Address ${getEllipsisTxt(addressString, 6)} already whitelisted`);
+                return false;
+            }
+            return true
+        }
+
+    }
+
     return (
         <Card extra={<RenderToolTip />} title={title} size="small" style={{ marginBottom: "20px" }}>
             <Form name={methodName} form={form} layout="vertical" onFinish={handleSubmit}>
@@ -48,7 +78,18 @@ const ContractMethods = ({ title, formInputs, methodName, functionType }) => {
                         style={{ marginBottom: "15px" }}
                         key={key}
                     >
-                        <Input placeholder="input placeholder" />
+                        {
+                            input.type === "address[]" ?
+                                <MultiTagInput
+                                    updateData={updateUserAddressArray}
+                                    data={userAddressArray}
+                                    formKey={`${input.name}`}
+                                    validateAddItem={validateNewAddressItem}
+                                    loading={whiteListResponse.loading}
+                                />
+                                :
+                                <Input placeholder="input placeholder" />
+                        }
                     </Form.Item>
                 ))}
                 <Form.Item style={{ marginBottom: "5px" }}>

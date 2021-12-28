@@ -53,7 +53,7 @@ export const executeSmartContractFunction = (functionType, setResponse, function
                     clone[`${functionName}`] = response;
                     return clone;
                 })
-                resolve(true)
+                resolve(response)
                 // set loading false and response here
             }).catch(error => {
                 setResponse(prev => ({ ...prev, loading: false }))
