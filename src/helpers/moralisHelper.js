@@ -10,9 +10,6 @@ export const executeSmartContractFunction = (functionType, setResponse, function
             abi: CONTRACT_INFO.contractABI,
             params: functionParams,
         };
-        console.log("options", options)
-        console.log("options", options)
-        console.log("options", options)
         if (functionType === STATE_MUTABILITY_TYPES.payable || functionType === STATE_MUTABILITY_TYPES.nonpayable) {
             options["awaitReceipt"] = false;
             if (functionType === STATE_MUTABILITY_TYPES.payable) {
@@ -50,7 +47,11 @@ export const executeSmartContractFunction = (functionType, setResponse, function
                         reject(false)
                     });
             } catch (err) {
-                console.log(err)
+                setResponse(prev => ({ ...prev, loading: false }))
+                openNotification({
+                    message: "❌ ERROR",
+                    description: `${err}`,
+                });
             }
         }
         else {

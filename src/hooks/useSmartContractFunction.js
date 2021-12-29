@@ -8,12 +8,16 @@ const useSmartContractFunction = () => {
     const { isValidChain } = useContext(DappContext);
 
     const executeSmartContractFunction = (...args) => {
-        if (!isValidChain) {
-            const error = getInValidNetworkError()
-            message.error(error);
-            return new Error(error)
-        }
-        smartContractFunction(...args)
+        return new Promise((resolve, reject) => {
+            if (!isValidChain) {
+                const error = getInValidNetworkError()
+                message.error(error);
+                reject(error)
+            }
+            smartContractFunction(...args).then((res) => {
+                resolve(res)
+            })
+        })
     }
 
     return {
