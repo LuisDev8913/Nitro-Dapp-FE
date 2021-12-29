@@ -7,6 +7,7 @@ import {
   useRoutes,
 } from "react-router-dom";
 import AdminRoute from './components/Routes/AdminRoute';
+import "antd/dist/antd.css";
 
 
 const App = ({ isWeb3Enabled, isAuthenticated }) => {

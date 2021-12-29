@@ -27,7 +27,7 @@ const Header = React.memo(() => {
                         {
                             smartContractOwnerInfo.loading ? <Loading /> :
                                 smartContractOwnerInfo.isCurrentUserOwner ?
-                                    <Link style={{ color: 'white' }}  to={RouteNames.Admin.admin} >🚀 GO TO ADMIN PANEL</Link> : <></>
+                                    <Link style={{ color: 'white' }} to={RouteNames.Admin.admin} >🚀 GO TO ADMIN PANEL</Link> : <></>
                         }
                         <TokenPrice
                             address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"

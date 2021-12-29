@@ -10,14 +10,14 @@ import { Tooltip } from "antd";
 import { getInValidNetworkError } from "../../helpers/networks";
 const styles = {
   account: {
-    height: "42px",
+    height: "max-content",
     padding: "0 15px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "fit-content",
+    width: "max-content",
     borderRadius: "12px",
-    backgroundColor: "rgb(244, 244, 244)",
+    backgroundColor: "#8c681680",
     cursor: "pointer",
   },
   text: {
@@ -88,7 +88,7 @@ function Account() {
   return (
     <>
       <div style={styles.account} onClick={() => setIsModalVisible(true)} className="authButton">
-        <p style={{ marginRight: "5px", ...styles.text }}>
+        <p style={{ lineHeight: '40px', color: '#fff', marginBottom: '0', marginRight: "5px", ...styles.text }}>
           {
             isValidChain ? getEllipsisTxt(account, 6) :
               <Tooltip title={getInValidNetworkError()}>

@@ -16,10 +16,10 @@ const AccountInfoModal = ({ isModalVisible, closeModal, chainId, logout, account
                         marginTop: "10px",
                         borderRadius: "1rem",
                     }}
-                    bodyStyle={{ padding: "15px" }}
+                    bodyStyle={{ padding: "15px 0" }}
                 >
                     <Address avatar="left" size={6} copyable style={{ fontSize: "20px" }} />
-                    <div style={{ marginTop: "10px", padding: "0 10px" }}>
+                    <div className='explorer' style={{ marginTop: "10px", padding: "0 10px" }}>
                         <a href={`${getExplorer(chainId)}/address/${account}`} target="_blank" rel="noreferrer">
                             <SelectOutlined style={{ marginRight: "5px" }} />
                             View on Explorer
