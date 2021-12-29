@@ -58,7 +58,7 @@ const ContractMethods = ({ title, formInputs, methodName, functionType, desc }) 
             return false;
         }
         else {
-            let isAlreadyWhiteList = await executeSmartContractFunction(STATE_MUTABILITY_TYPES.view, setWhiteListResponse, "whitelisted", { "": addressString });
+            let isAlreadyWhiteList = await executeSmartContractFunction(STATE_MUTABILITY_TYPES.view, setWhiteListResponse, "isWhitelisted", { "_address": addressString });
             if (isAlreadyWhiteList) {
                 message.error(`Address ${getEllipsisTxt(addressString, 6)} already whitelisted`);
                 return false;
