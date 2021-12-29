@@ -58,7 +58,7 @@ const MintModal = ({ isVisible, closeModal }) => {
 
     const [form] = Form.useForm();
     const [isInfoChecked, setIsInfoCheck] = useState(false)
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
         const paramObject = {
             _count: values?._count,
         }
@@ -73,11 +73,11 @@ const MintModal = ({ isVisible, closeModal }) => {
             "clothingSize": values?.clothingSize || "",
         })
         const ethValue = getBalanceInWEI(values?._count * ETH_NFT_PRICE)
-        executeSmartContractFunction(STATE_MUTABILITY_TYPES.payable, setMintResponse, "mint", paramObject, ethValue).then(res => {
-            if (getUserSmartContractInfo) {
-                getUserSmartContractInfo()
-            }
-        })
+        await executeSmartContractFunction(STATE_MUTABILITY_TYPES.payable, setMintResponse, "mint", paramObject, ethValue)
+        if (getUserSmartContractInfo) {
+            getUserSmartContractInfo()
+            closeModal()
+        }
     }
 
     const [country, setCountry] = useState(null);
