@@ -1,7 +1,7 @@
 export const CONTRACT_INFO = {
     "contractName": "NIFIT",
-    "contractAddress": "0x8555800862291959bc01ca05ce6e43ffe805ba9e",
-    "transactionHash": "0x78a2b1fef642deafb39dae8a7efb4df29b5f7fe5b85998971cafd0eb82b2fd79",
+    "contractAddress": "0x2cd3571b43cea2c72bc8c57a6204e3ce2e02a603",
+    "transactionHash": "0xa5d3c20f034b603f39c4ec42a1b08b0f9a9535736a15fed71fbd1f3bf62a3777",
     "PresalePriceInETH": "0.1",
     "MainPriceInETH": "0.1",
     "contractABI": [
