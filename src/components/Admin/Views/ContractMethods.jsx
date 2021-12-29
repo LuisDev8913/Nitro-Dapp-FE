@@ -69,8 +69,8 @@ const ContractMethods = ({ title, formInputs, methodName, functionType, desc }) 
     }
 
     return (
-        <Card extra={<RenderToolTip />} title={methodName} size="small" style={{ marginBottom: "20px" }}>
-            <Form name={methodName} form={form} layout="vertical" onFinish={handleSubmit}>
+        <Card extra={<RenderToolTip />} title={title} size="small" style={{ marginBottom: "20px" }}>
+            <Form name={title} form={form} layout="vertical" onFinish={handleSubmit}>
                 {formInputs?.map((input, key) => (
                     <Form.Item
                         label={`${input.name} (${input.type})`}
