@@ -293,7 +293,6 @@ p{
     color: #000;
     font-size: 15px;
     line-height: 15px;
-    padding: 12px 24px;
     border-radius: 3px;
     border: 0;
     cursor: pointer;
@@ -390,10 +389,10 @@ p{
 
 /* Footer */
 
- .authButton p {
+ /* .authButton p {
     color: #21bf96 !important;
     margin-bottom: 0;
-}
+} */
 
 .nativeBalanceText {
     margin-right: 10px;
@@ -597,3 +596,11 @@ p{
     color: #fff;
 }
 /* MODAL */
+.required:after {
+    content:" *";
+    color: red;
+  }
+.required{
+    font-size: 10px;
+    margin-left: 12px;
+}

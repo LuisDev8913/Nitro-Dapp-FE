@@ -14,7 +14,8 @@ export const SmartContractAdminABI = [
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function",
-        "desc":"This Function will add Address to the  WhiteList Users"
+        "desc":"This Function will add Address to the  WhiteList Users",
+        "slugName":"Batch Whitelist"
     },
    
     {
@@ -34,7 +35,8 @@ export const SmartContractAdminABI = [
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function",
-        "desc":"This Function will use for minting without using NFT Price (Restricted to Owner Only)"
+        "desc":"This Function will use for minting without using NFT Price (Restricted to Owner Only)",
+        "slugName":"Mint For Owner"
     },
 
     {
@@ -43,7 +45,8 @@ export const SmartContractAdminABI = [
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function",
-        "desc":"This Function will pause the minting process of Smart Contract"
+        "desc":"This Function will pause the minting process of Smart Contract",
+        "slugName":"Pause"
     },
     {
         "inputs": [],
@@ -51,7 +54,8 @@ export const SmartContractAdminABI = [
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function",
-        "desc":"This Function will Renounce your OWNERSHIP with Smart Contract"
+        "desc":"This Function will Renounce your OWNERSHIP with Smart Contract",
+        "slugName":"Renounce Ownership"
     },
     {
         "inputs": [
@@ -65,7 +69,8 @@ export const SmartContractAdminABI = [
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function",
-        "desc":"This Function will change Base URL for NFTs"
+        "desc":"This Function will change Base URL for NFTs",
+        "slugName":"Base Uri"
     },
 
 
@@ -76,7 +81,8 @@ export const SmartContractAdminABI = [
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function",
-        "desc":"This Function will set the Current Sales Round as MAIN"
+        "desc":"This Function will set the Current Sales Round as MAIN",
+        "slugName":"Set Sales Round Main"
     },
     {
         "inputs": [],
@@ -84,7 +90,8 @@ export const SmartContractAdminABI = [
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function",
-        "desc":"This Function will set the Current Sales Round as PRESALE"
+        "desc":"This Function will set the Current Sales Round as PRESALE",
+        "slugName":"Set Sales Round Pre-Sale"
     },
     {
         "inputs": [
@@ -108,7 +115,8 @@ export const SmartContractAdminABI = [
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function",
-        "desc":"To tranfer the token another valid address."
+        "desc":"To tranfer the token another valid address.",
+        "slugName":"Tranfer Token"
     },
 
 
@@ -124,7 +132,8 @@ export const SmartContractAdminABI = [
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function",
-        "desc":"To tranfer the OWNERSHIP of Smart Contract another valid address."
+        "desc":"To tranfer the OWNERSHIP of Smart Contract another valid address.",
+        "slugName":"Tranfer Ownership"
     },
     {
         "inputs": [],
@@ -132,7 +141,8 @@ export const SmartContractAdminABI = [
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function",
-        "desc":"To Resume to MINTING process if paused."
+        "desc":"To Resume to MINTING process if paused.",
+        "slugName":"Unpause"
     },
 
 
@@ -142,7 +152,8 @@ export const SmartContractAdminABI = [
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function",
-        "desc":"To withdraw all Smart Contract Funds into Owner's Wallet (Restricted to OWNER only)"
+        "desc":"To withdraw all Smart Contract Funds into Owner's Wallet (Restricted to OWNER only)",
+        "slugName":"Withdraw All"
     },
     {
         "inputs": [
@@ -162,7 +173,8 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"Returns the number of tokens of a provided wallet address."
+        "desc":"Returns the number of tokens of a provided wallet address.",
+        "slugName":"Balance Of Tokens"
     },
     {
         "inputs": [],
@@ -176,7 +188,8 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"Returns the BASE URL for NFTs"
+        "desc":"Returns the BASE URL for NFTs",
+        "slugName":"Base Token URI"
     },
     {
         "inputs": [],
@@ -190,7 +203,8 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"This function will return CURRENT SALES ROUND (PRESALE/MAIN)"
+        "desc":"This function will return CURRENT SALES ROUND (PRESALE/MAIN)",
+        "slugName":"Current Sales Round"
     },
     {
         "inputs": [
@@ -210,7 +224,8 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"Returns if the provided wallet address is whitelisted for PRESALE Minting."
+        "desc":"Returns if the provided wallet address is whitelisted for PRESALE Minting.",
+        "slugName":"Is Whitelisted"
     },
     {
         "inputs": [],
@@ -224,7 +239,8 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"Returns MAX number of NFT tokens to be minted."
+        "desc":"Returns MAX number of NFT tokens to be minted.",
+        "slugName":"Max Elements For Mint"
     },
   
     {
@@ -239,7 +255,8 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"Returns Name of Contract"
+        "desc":"Returns Name of Contract",
+        "slugName":"Name"
     },
     {
         "inputs": [],
@@ -253,7 +270,8 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"Returns wallet address of Owner."
+        "desc":"Returns wallet address of Owner.",
+        "slugName":"Owner"
     },
     {
         "inputs": [
@@ -273,7 +291,8 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"Returns Wallet Address of provided Token number"
+        "desc":"Returns Wallet Address of provided Token number",
+        "slugName":"Owner Of Token Number"
     },
     {
         "inputs": [],
@@ -287,7 +306,8 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"Returns if the MINTING Process is Paused."
+        "desc":"Returns if the MINTING Process is Paused.",
+        "slugName":"Is Paused"
     },
     {
         "inputs": [
@@ -307,7 +327,8 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"Returns price of NFT per count"
+        "desc":"Returns price of NFT per count",
+        "slugName":"Price"
     },
   
     {
@@ -322,7 +343,8 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"Returns Smart Contract Symbol"
+        "desc":"Returns Smart Contract Symbol",
+        "slugName":"Symbol"
     },
     {
         "inputs": [],
@@ -336,7 +358,8 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"Returns Total Supply for NFTs minted till yet."
+        "desc":"Returns Total Supply for NFTs minted till yet.",
+        "slugName":"Total Supply"
     },
     {
         "inputs": [
@@ -356,6 +379,7 @@ export const SmartContractAdminABI = [
         ],
         "stateMutability": "view",
         "type": "function",
-        "desc":"Returns token numbers of provided wallet address"
+        "desc":"Returns token numbers of provided wallet address",
+        "slugName":"Wallet Of Owner"
     }
 ]

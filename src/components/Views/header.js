@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { NitidLogo } from "../../assets/img";
 import { RouteNames } from "../../constants/routeNames";
 import useSmartContractOwner from "../../hooks/useSmartContractOwner";
@@ -8,10 +8,8 @@ import NativeBalance from "../NativeBalance/NativeBalance";
 import Loading from "../Shared/Loading";
 import TokenPrice from "../TokenPrice";
 
-const Header = () => {
+const Header = React.memo(() => {
     const { smartContractOwnerInfo } = useSmartContractOwner()
-
-
     return (
         <div className="header">
             <div className="container-fluid">
@@ -29,7 +27,7 @@ const Header = () => {
                         {
                             smartContractOwnerInfo.loading ? <Loading /> :
                                 smartContractOwnerInfo.isCurrentUserOwner ?
-                                    <NavLink style={{ color: 'white' }} to={RouteNames.Admin.admin} >🚀 GO TO ADMIN PANEL</NavLink> : <></>
+                                    <Link style={{ color: 'white' }} to={RouteNames.Admin.admin} >🚀 GO TO ADMIN PANEL</Link> : <></>
                         }
                         <TokenPrice
                             address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
@@ -44,6 +42,6 @@ const Header = () => {
             </div>
         </div>
     )
-}
+})
 
 export default Header;

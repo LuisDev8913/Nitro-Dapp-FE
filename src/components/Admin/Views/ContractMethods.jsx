@@ -58,7 +58,7 @@ const ContractMethods = ({ title, formInputs, methodName, functionType, desc }) 
             return false;
         }
         else {
-            let isAlreadyWhiteList = await executeSmartContractFunction(STATE_MUTABILITY_TYPES.view, setWhiteListResponse, "whitelisted", { "": addressString });
+            let isAlreadyWhiteList = await executeSmartContractFunction(STATE_MUTABILITY_TYPES.view, setWhiteListResponse, "isWhitelisted", { "_address": addressString });
             if (isAlreadyWhiteList) {
                 message.error(`Address ${getEllipsisTxt(addressString, 6)} already whitelisted`);
                 return false;
@@ -105,7 +105,7 @@ const ContractMethods = ({ title, formInputs, methodName, functionType, desc }) 
                     </Button>
                     {
                         (functionType === STATE_MUTABILITY_TYPES.payable || functionType === STATE_MUTABILITY_TYPES.nonpayable) &&
-                        <span>GAS FEES MAY APPLY</span>
+                        <span className="required">Gas fees may apply</span>
                     }
                 </Form.Item>
             </Form>
