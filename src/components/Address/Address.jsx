@@ -11,9 +11,10 @@ const styles = {
     height: "36px",
     display: "flex",
     gap: "5px",
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    backgroundColor: "rgb(140 104 22 / 50%)",
     borderRadius: "9px",
     alignItems: "center",
+    padding: "0 10px"
   },
 };
 
@@ -56,7 +57,7 @@ function Address(props) {
   return (
     <div style={{ ...styles.address, ...props.style }}>
       {props.avatar === "left" && <Blockie address={address} size={7} />}
-      <p className="modalText">{props.size ? getEllipsisTxt(address, props.size) : address}</p>
+      <p className="modalText whitetext">{props.size ? getEllipsisTxt(address, props.size) : address}</p>
       {props.avatar === "right" && <Blockie address={address} size={7} />}
       {props.copyable && (isClicked ? <Check /> : <Copy />)}
     </div>

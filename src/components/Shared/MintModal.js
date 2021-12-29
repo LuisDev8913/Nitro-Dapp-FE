@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Button, Card, Checkbox, Form, Input, Modal, Radio, Select, InputNumber } from 'antd'
+import { Button, Card, Checkbox, Form, Input, Modal, Radio, Select, InputNumber, Row, Col } from 'antd'
 import { isRequiredMessage } from './ValidationMessages';
 import { ClothingSizeTypes, ETH_NFT_PRICE, GenderTypes } from '../../constants/enums';
 import { STATE_MUTABILITY_TYPES } from "../../constants/enums"
@@ -104,11 +104,14 @@ const MintModal = ({ isVisible, closeModal }) => {
 
     return (
         <Modal
+            maskStyle={{ backgroundColor: '#00000080' }}
+            footer={null}
             visible={isVisible}
             title="Mint Nitid NFT"
             centered
             onCancel={closeModal}
             width={800}
+            bodyStyle={{ backgroundColor: '#000', padding: 0 }}
         >
             <Card>
                 <Form
@@ -254,9 +257,14 @@ const MintModal = ({ isVisible, closeModal }) => {
                             <Radio.Button value={ClothingSizeTypes.ExtraLarge}>{ClothingSizeTypes.ExtraLarge}</Radio.Button>
                         </Radio.Group>
                     </Form.Item>
-                    <span
-                        className="ant-form-text"> Only 2 NFTs are allowed be MINT</span>
+                    <Row >
+                        <Col xs={24} sm={8} md={8} lg={8} xl={8}>
 
+                        </Col>
+                        <Col xs={24} sm={16} md={16} lg={16} xl={16}>
+                            <span className='textline'>Only 2 NFTs are allowed be MINT</span>
+                        </Col>
+                    </Row>
                     <Form.Item
                         label={MintFormLabels.Count.label}
                         initialValue={1}
@@ -268,7 +276,7 @@ const MintModal = ({ isVisible, closeModal }) => {
                     >
                         <InputNumber min={1} max={2} />
                     </Form.Item>
-                    <Form.Item >
+                    <Form.Item className='lastbtn'>
                         <Button loading={mintResponse.loading} type="primary" htmlType="submit">
                             MINT
                         </Button>
