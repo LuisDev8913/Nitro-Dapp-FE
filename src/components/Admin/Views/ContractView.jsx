@@ -1,7 +1,7 @@
 import { Card } from "antd";
 import { useMemo } from "react";
-import { contractAddress, contractABI, contractName } from '../../../contract/contractInfo.json'
-import {SmartContractAdminABI} from "../Constants/constants";
+import { contractAddress, contractName } from '../../../contract/contractInfo.json'
+import { SmartContractAdminABI } from "../Constants/constants";
 import { useMoralisQuery } from "react-moralis";
 import Address from "../../Address/Address";
 import ContractMethods from "./ContractMethods";
