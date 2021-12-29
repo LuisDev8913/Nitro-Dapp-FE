@@ -5,11 +5,7 @@ import { Route, Routes } from "react-router";
 import { RouteNames } from "../../../constants/routeNames";
 import Contract from "./ContractView";
 import UserData from "./UserData"
-const Dummy = () => {
-    return (
-        <p style={{ backgroundColor: 'white' }}>THIS IS ROUTE</p>
-    )
-}
+
 const AdminView = ({ isServerInfo }) => {
     return (
         <Layout style={{ height: "100vh", overflow: "auto", backgroundColor: 'black' }}>
@@ -18,7 +14,8 @@ const AdminView = ({ isServerInfo }) => {
                 <Routes>
                     <Route path={`/${RouteNames.Admin.contract}`} element={<Contract />} />
                     <Route path={`/${RouteNames.Admin.users}`} element={<UserData />} />
-                    <Route path={`/${RouteNames.Admin.NFTS}`} element={<Dummy />} />
+                    <Route path={`/*`} element={<Contract />} />
+                    
                 </Routes>
             </div>
         </Layout>

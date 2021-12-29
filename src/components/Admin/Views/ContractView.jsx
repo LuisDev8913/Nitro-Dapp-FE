@@ -1,6 +1,7 @@
 import { Card } from "antd";
 import { useMemo } from "react";
 import { contractAddress, contractABI, contractName } from '../../../contract/contractInfo.json'
+import {SmartContractAdminABI} from "../Constants/constants";
 import { useMoralisQuery } from "react-moralis";
 import Address from "../../Address/Address";
 import ContractMethods from "./ContractMethods";
@@ -14,8 +15,8 @@ export default function Contract() {
 
 
     const displayedContractFunctions = useMemo(() => {
-        if (!contractABI) return [];
-        return contractABI.filter((method) => method["type"] === "function");
+        if (!SmartContractAdminABI) return [];
+        return SmartContractAdminABI.filter((method) => method["type"] === "function");
     }, []);
 
 
@@ -45,6 +46,7 @@ export default function Contract() {
                                 methodName={each?.name}
                                 functionType={each?.stateMutability}
                                 key={index}
+                                desc={each.desc}
                             />
                         )
                     })

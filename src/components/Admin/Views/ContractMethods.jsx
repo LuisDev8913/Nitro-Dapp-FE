@@ -9,7 +9,7 @@ import useSmartContractFunction from "../../../hooks/useSmartContractFunction";
 import { isValidAddress } from "../../../utils/web3Util";
 import MultiTagInput from "../../Shared/MultiTagInput/MultiTagInput";
 
-const ContractMethods = ({ title, formInputs, methodName, functionType }) => {
+const ContractMethods = ({ title, formInputs, methodName, functionType, desc }) => {
     const [userAddressArray, setUserAddressArray] = useState([]);
     const { executeSmartContractFunction } = useSmartContractFunction();
     const [contractResponse, setContractResponse] = useState({
@@ -39,7 +39,7 @@ const ContractMethods = ({ title, formInputs, methodName, functionType }) => {
 
     const RenderToolTip = () => {
         return (
-            <Tooltip title={methodName}>
+            <Tooltip title={desc}>
                 <InfoCircleOutlined />
             </Tooltip>
         )

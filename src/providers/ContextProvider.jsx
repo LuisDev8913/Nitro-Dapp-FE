@@ -29,9 +29,9 @@ const smartContractFunctions = [
     },
     {
         id: 4,
-        functionName: "whitelisted",
+        functionName: "isWhitelisted",
         functionType: STATE_MUTABILITY_TYPES.view,
-        key: "",
+        key: "_address",
         params: true
     },
     {
