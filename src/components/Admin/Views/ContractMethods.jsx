@@ -105,7 +105,7 @@ const ContractMethods = ({ title, formInputs, methodName, functionType, desc }) 
                     </Button>
                     {
                         (functionType === STATE_MUTABILITY_TYPES.payable || functionType === STATE_MUTABILITY_TYPES.nonpayable) &&
-                        <span>GAS FEES MAY APPLY</span>
+                        <span className="required">Gas fees may apply</span>
                     }
                 </Form.Item>
             </Form>

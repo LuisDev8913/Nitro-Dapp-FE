@@ -63,7 +63,7 @@ const UserMetaDataTable = () => {
       <Row className="row">
         <Col span={50}>
 
-          <Table columns={columns} dataSource={dataSouce} scroll={{ x: 1500 }} />
+          <Table loading={isLoading} columns={columns} dataSource={dataSouce} scroll={{ x: 1500 }} />
         </Col>
 
 

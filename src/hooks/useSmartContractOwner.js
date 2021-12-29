@@ -7,12 +7,14 @@ const useSmartContractOwner = () => {
     const { account, isAuthenticating, isAuthenticated } = useMoralis();
     const { smartContractInfo } = useContext(DappContext);
     const [smartContractOwnerInfo, setSmartContractOwnerInfo] = useState({
-        loading: false,
+        loading: null,
         ownerAddress: null,
-        isCurrentUserOwner: false
+        isCurrentUserOwner: null
     })
     useEffect(() => {
-        setSmartContractOwnerInfo(prev => ({ ...prev, loading: true }))
+        if (!isAuthenticating && isAuthenticated) {
+            setSmartContractOwnerInfo(prev => ({ ...prev, loading: true }))
+        }
         if (!isAuthenticating && isAuthenticated && !smartContractInfo.loading && smartContractInfo.owner) {
             let isCurrentUserOwner = compareAddresses(smartContractInfo.owner, account);
             setSmartContractOwnerInfo({

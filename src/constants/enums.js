@@ -19,8 +19,8 @@ export const STATE_MUTABILITY_TYPES = {
 export const ETH_NFT_PRICE = 0.1;
 
 export const SOCIAL_LINKS = {
-    "TWITTER": "https://twitter.com/",
-    "INSTAGRAM": "https://www.instagram.com/"
+    "TWITTER": "https://twitter.com/Nitid_NFT",
+    "INSTAGRAM": "https://www.instagram.com/nitid_nft/"
 }
 
 export const SALES_ROUNDS = {

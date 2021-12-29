@@ -51,7 +51,6 @@ const smartContractFunctions = [
 const DappContextProvider = ({ children }) => {
     const [smartContractInfo, setSmartContractInfo] = useState({});
     const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading, account, chainId } = useMoralis();
-    const [isFetched, setIsFetched] = useState(false);
     const [isValidChain, setIsValidChain] = useState(null);
 
 
@@ -76,11 +75,18 @@ const DappContextProvider = ({ children }) => {
     }, [isAuthenticated, isWeb3Enabled]);
 
     useEffect(() => {
-        if (isWeb3Enabled && isAuthenticated && !isWeb3EnableLoading && isValidChain && !isFetched) {
+        if (isWeb3Enabled && isAuthenticated && !isWeb3EnableLoading && isValidChain && account) {
+            console.log("ACCOUNT CHANGED, GETTING NEW RECORDS*******************************")
+            console.log("ACCOUNT CHANGED, GETTING NEW RECORDS*******************************")
+            console.log("ACCOUNT CHANGED, GETTING NEW RECORDS*******************************")
+            console.log("ACCOUNT CHANGED, GETTING NEW RECORDS*******************************")
+            console.log("ACCOUNT CHANGED, GETTING NEW RECORDS*******************************")
+            console.log("ACCOUNT CHANGED, GETTING NEW RECORDS*******************************")
+
             getUserSmartContractInfo()
         }
         // eslint-disable-next-line
-    }, [isWeb3Enabled, isAuthenticated, isWeb3EnableLoading, isValidChain, isFetched]);
+    }, [isWeb3Enabled, isAuthenticated, isWeb3EnableLoading, isValidChain, account]);
 
     const getParams = (paramName) => {
         let paramsObject = {};
@@ -89,13 +95,11 @@ const DappContextProvider = ({ children }) => {
     }
 
     const getUserSmartContractInfo = () => {
-        if (isWeb3Enabled && isAuthenticated && !isWeb3EnableLoading && isValidChain && !isFetched) {
+        if (isWeb3Enabled && isAuthenticated && !isWeb3EnableLoading && isValidChain) {
             Promise.all(smartContractFunctions.map(each => {
                 return executeSmartContractFunction(each.functionType, setSmartContractInfo, each.functionName, each.params ? getParams(each.key) : []);
             })).then(res => {
-                setIsFetched(true)
             }).catch(e => {
-                setIsFetched(false);
                 setSmartContractInfo(prev => ({ ...prev, loading: false }))
             })
         }

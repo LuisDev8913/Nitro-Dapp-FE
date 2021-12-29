@@ -1,6 +1,7 @@
 import { Card } from "antd";
 import { useMemo } from "react";
-import { contractAddress, contractName } from '../../../contract/contractInfo.json'
+import  * as  contractName   from '../../../contract/contractInfo.json'
+import  * as  contractAddress   from '../../../contract/contractInfo.json'
 import { SmartContractAdminABI } from "../Constants/constants";
 import { useMoralisQuery } from "react-moralis";
 import Address from "../../Address/Address";
@@ -41,7 +42,7 @@ export default function Contract() {
                     displayedContractFunctions.map((each, index) => {
                         return (
                             <ContractMethods
-                                title={`${index + 1}. ${each?.name}`}
+                                title={`${index + 1}. ${each?.slugName}`}
                                 formInputs={each?.inputs}
                                 methodName={each?.name}
                                 functionType={each?.stateMutability}
