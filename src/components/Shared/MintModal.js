@@ -7,9 +7,9 @@ import { STATE_MUTABILITY_TYPES } from "../../constants/enums"
 import Cities from "../../JSONData/citiesData.json";
 import States from "../../JSONData/statesData.json";
 import Countries from "../../JSONData/countries.json";
-import { executeSmartContractFunction } from '../../helpers/moralisHelper';
 import { getBalanceInWEI } from '../../helpers/balanceConvertHelper';
 import DappContext from '../../context';
+import useSmartContractFunction from '../../hooks/useSmartContractFunction';
 
 const formItemLayout = {
     labelCol: {
@@ -43,6 +43,7 @@ const MintFormLabels = {
 }
 
 const MintModal = ({ isVisible, closeModal }) => {
+    const { executeSmartContractFunction } = useSmartContractFunction();
     const { getUserSmartContractInfo } = useContext(DappContext);
     const [mintResponse, setMintResponse] = useState({
         loading: false,

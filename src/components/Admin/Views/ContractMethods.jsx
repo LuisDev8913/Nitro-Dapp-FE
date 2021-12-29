@@ -5,12 +5,13 @@ import { useState } from "react";
 import { ETH_NFT_PRICE, STATE_MUTABILITY_TYPES } from "../../../constants/enums";
 import { getBalanceInWEI } from "../../../helpers/balanceConvertHelper";
 import { getEllipsisTxt } from "../../../helpers/formatters";
-import { executeSmartContractFunction } from "../../../helpers/moralisHelper";
+import useSmartContractFunction from "../../../hooks/useSmartContractFunction";
 import { isValidAddress } from "../../../utils/web3Util";
 import MultiTagInput from "../../Shared/MultiTagInput/MultiTagInput";
 
 const ContractMethods = ({ title, formInputs, methodName, functionType }) => {
     const [userAddressArray, setUserAddressArray] = useState([]);
+    const { executeSmartContractFunction } = useSmartContractFunction();
     const [contractResponse, setContractResponse] = useState({
         loading: false,
         response: null

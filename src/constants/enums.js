@@ -27,3 +27,8 @@ export const SALES_ROUNDS = {
     "MAIN": "MAIN",
     "PRESALE": "PRESALE"
 }
+
+export const CONTRACT_DEFAULT_CHAIN = {
+    key: "0x4",
+    value: "Rinkeby Testnet"
+}

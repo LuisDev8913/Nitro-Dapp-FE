@@ -1,10 +1,13 @@
 import { useMoralis } from "react-moralis";
 import { getEllipsisTxt } from "../../helpers/formatters";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Blockie from "../Blockie";
 import { useMetaMaskConnection } from "../../hooks";
 import NoMetaMaskModal from "../Shared/NoMetaMaskModal";
 import AccountInfoModal from "../Shared/AccountInfoModal";
+import DappContext from "../../context";
+import { Tooltip } from "antd";
+import { getInValidNetworkError } from "../../helpers/networks";
 const styles = {
   account: {
     height: "42px",
@@ -43,6 +46,7 @@ const styles = {
 function Account() {
   const { isMetaMaskInstalled } = useMetaMaskConnection()
   const { authenticate, isAuthenticated, logout, chainId, account } = useMoralis();
+  const { isValidChain } = useContext(DappContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isMetaMaskModalVisible, setIsMetaMaskModalVisible] = useState(false);
 
@@ -84,7 +88,14 @@ function Account() {
   return (
     <>
       <div style={styles.account} onClick={() => setIsModalVisible(true)} className="authButton">
-        <p style={{ marginRight: "5px", ...styles.text }}>{getEllipsisTxt(account, 6)}</p>
+        <p style={{ marginRight: "5px", ...styles.text }}>
+          {
+            isValidChain ? getEllipsisTxt(account, 6) :
+              <Tooltip title={getInValidNetworkError()}>
+                {"IN VALID NETWORK CONNECTED"}
+              </Tooltip>
+          }
+        </p>
         <Blockie currentWallet scale={3} />
       </div>
       <AccountInfoModal

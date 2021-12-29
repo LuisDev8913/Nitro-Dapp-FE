@@ -71,7 +71,7 @@ const MultiTagInput = ({ data, updateData, formKey, validateAddItem, loading }) 
                         ))
                     }
                     <li style={{ float: 'left' }}>
-                        <Input disabled={loading} onKeyDown={keyDown} ref={inputRef} value={valueInput} className='inputClass' onPressEnter={pressEnter} onChange={handleChange} />
+                        <Input placeholder='input placeholder' disabled={loading} onKeyDown={keyDown} ref={inputRef} value={valueInput} className='inputClass' onPressEnter={pressEnter} onChange={handleChange} />
                     </li>
                 </ul>
             </div>

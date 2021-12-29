@@ -1,3 +1,5 @@
+import { CONTRACT_DEFAULT_CHAIN } from "../constants/enums";
+
 export const networkConfigs = {
   "0x1": {
     currencySymbol: "ETH",
@@ -79,3 +81,8 @@ export const getExplorer = (chain) => networkConfigs[chain]?.blockExplorerUrl;
 
 export const getWrappedNative = (chain) =>
   networkConfigs[chain]?.wrapped || null;
+
+
+export const getInValidNetworkError = () => {
+  return `Please connect to ${CONTRACT_DEFAULT_CHAIN.value} to interact with Smart Contract.`
+}
