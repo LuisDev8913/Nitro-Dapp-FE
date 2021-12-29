@@ -6,9 +6,7 @@ import Loading from '../Shared/Loading';
 
 const AdminRoute = (props) => {
   const { smartContractOwnerInfo } = useSmartContractOwner();
-  return (
-    <AdminView />
-  )
+
   return (
     <>
       {
