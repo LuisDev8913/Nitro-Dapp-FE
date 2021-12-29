@@ -8,6 +8,7 @@ function MenuItems() {
 
     return (
         <Menu
+            className="cs-menu"
             theme="light"
             mode="horizontal"
             style={{

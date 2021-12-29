@@ -21,7 +21,7 @@ export default function Contract() {
 
 
     return (
-        <div style={{ margin: "auto", display: "flex", gap: "20px", marginTop: "25px", marginBottom: "25px", width: "90vw" }}>
+        <div className="cs-contract" style={{ margin: "auto", display: "flex", gap: "20px", marginTop: "25px", marginBottom: "25px", width: "90vw" }}>
             <Card
                 title={
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>

@@ -5,15 +5,18 @@ import AdminView from '../Admin/Views/AdminView';
 import Loading from '../Shared/Loading';
 
 const AdminRoute = (props) => {
-  const  {smartContractOwnerInfo}  = useSmartContractOwner();
+  const { smartContractOwnerInfo } = useSmartContractOwner();
+  return (
+    <AdminView />
+  )
   return (
     <>
       {
         smartContractOwnerInfo.loading === true ? <Loading /> :
-        smartContractOwnerInfo.loading === false && smartContractOwnerInfo.isCurrentUserOwner === false?
+          smartContractOwnerInfo.loading === false && smartContractOwnerInfo.isCurrentUserOwner === false ?
             <Navigate to="/" />
             :
-             <AdminView />
+            <AdminView />
       }
     </>
   )

@@ -592,9 +592,24 @@ p{
 .whitetext + svg {
     stroke: #fff;
 }
-.explorer a {
+.explorer a , .explorer a:hover{
     color: #fff;
 }
+.cs-contract .ant-btn {
+    background: #8C6816;
+    border-color: #8C6816;
+    height: initial;
+    padding: 6px 25px;
+    box-shadow: 0 0 0 0;
+    border-radius: 0.5rem;
+    font-weight: 500;
+}
+.cs-contract .ant-btn:hover , .cs-contract .ant-btn-primary:active , .cs-contract .ant-btn-primary:focus{
+    background: transparent;
+    color: #8c6816;
+    border-color: #8c6816;
+}
+
 /* MODAL */
 .required:after {
     content:" *";
