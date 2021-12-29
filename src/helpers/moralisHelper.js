@@ -1,13 +1,13 @@
-import { contractABI, contractAddress } from "../contract/contractDetails"
 import { openNotification } from "./notificationHelper";
 import { Moralis } from 'moralis'
 import { STATE_MUTABILITY_TYPES } from "../constants/enums";
+import { CONTRACT_INFO } from "../contract/contractInfo";
 export const executeSmartContractFunction = (functionType, setResponse, functionName, functionParams, ethValue = null) => {
     return new Promise(async (resolve, reject) => {
         let options = {
-            contractAddress,
+            contractAddress: CONTRACT_INFO.contractAddress,
             functionName,
-            abi: contractABI,
+            abi: CONTRACT_INFO.contractABI,
             params: functionParams,
         };
         console.log("options", options)
@@ -19,7 +19,7 @@ export const executeSmartContractFunction = (functionType, setResponse, function
                 options["msgValue"] = ethValue
             }
             setResponse(prev => ({ ...prev, loading: true }))
-            try{
+            try {
 
                 const tx = await Moralis.executeFunction({ awaitReceipt: false, ...options });
                 tx.on("transactionHash", (hash) => {
@@ -49,7 +49,7 @@ export const executeSmartContractFunction = (functionType, setResponse, function
                         });
                         reject(false)
                     });
-            } catch (err){
+            } catch (err) {
                 console.log(err)
             }
         }

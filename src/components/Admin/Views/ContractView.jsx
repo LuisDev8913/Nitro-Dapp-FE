@@ -1,12 +1,11 @@
 import { Card } from "antd";
 import { useMemo } from "react";
-import  * as  contractName   from '../../../contract/contractInfo.json'
-import  * as  contractAddress   from '../../../contract/contractInfo.json'
 import { SmartContractAdminABI } from "../Constants/constants";
 import { useMoralisQuery } from "react-moralis";
 import Address from "../../Address/Address";
 import ContractMethods from "./ContractMethods";
 import { getEllipsisTxt } from "../../../helpers/formatters";
+import { CONTRACT_INFO } from "../../../contract/contractInfo";
 
 export default function Contract() {
     /**Live query */
@@ -26,8 +25,8 @@ export default function Contract() {
             <Card
                 title={
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        Your contract: {contractName}
-                        <Address avatar="left" copyable address={contractAddress} size={8} />
+                        Your contract: {CONTRACT_INFO.contractName}
+                        <Address avatar="left" copyable address={CONTRACT_INFO.contractAddress} size={8} />
                     </div>
                 }
                 size="large"
