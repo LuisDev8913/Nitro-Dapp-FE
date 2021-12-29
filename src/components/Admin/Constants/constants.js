@@ -131,6 +131,15 @@ export const SmartContractAdminABI = [
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function",
+		"desc": "To Un Pause Minting Process",
+		"slugName": "Un Pause Minting"
+	},
+	{
+		"inputs": [],
+		"name": "withdrawAll",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function",
 		"desc": "To withdraw all Smart Contract Funds into Owner's Wallet (Restricted to OWNER only)",
 		"slugName": "Withdraw All"
 	},
