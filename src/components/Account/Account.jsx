@@ -10,7 +10,7 @@ import { Tooltip } from "antd";
 import { getInValidNetworkError } from "../../helpers/networks";
 const styles = {
   account: {
-    height: "max-content",
+    height: "42px",
     padding: "0 15px",
     display: "flex",
     justifyContent: "center",
@@ -22,6 +22,7 @@ const styles = {
   },
   text: {
     color: "#21BF96",
+    marginBottom: "0"
   },
   connector: {
     alignItems: "center",

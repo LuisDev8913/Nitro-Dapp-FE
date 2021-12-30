@@ -9,11 +9,11 @@ import { CONTRACT_INFO } from "../../../contract/contractInfo";
 
 export default function Contract() {
     /**Live query */
-    const { data } = useMoralisQuery("AAQIBNFT", (query) => query, [], {
+    const { data } = useMoralisQuery("NitidMetaData", (query) => query, [], {
         live: true,
     });
 
-
+    console.log(data, " DATA ");
     const displayedContractFunctions = useMemo(() => {
         if (!SmartContractAdminABI) return [];
         return SmartContractAdminABI.filter((method) => method["type"] === "function");

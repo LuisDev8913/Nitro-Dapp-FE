@@ -6,7 +6,7 @@ import { columns } from "./colums";
 import { Row, Col } from 'antd';
 
 const UserMetaDataTable = () => {
-  const { data, error, isLoading } = useMoralisQuery("AAQIBNFT", (query) => query, [], {
+  const { data, error, isLoading } = useMoralisQuery("NitidMetaData", (query) => query, [], {
     live: true,
   });
   const isJSON = (str) => {
