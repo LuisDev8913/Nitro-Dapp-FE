@@ -55,7 +55,7 @@ function Account() {
     if (!isMetaMaskInstalled) {
       setIsMetaMaskModalVisible(true)
     }
-    authenticate({ signingMessage: "Connect with Gift Workshop Society" })
+    authenticate({ signingMessage: "Connect with NITID" })
   }
 
   const closeMetaMaskModal = () => {
