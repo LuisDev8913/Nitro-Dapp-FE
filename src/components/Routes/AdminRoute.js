@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate } from 'react-router';
 import useSmartContractOwner from '../../hooks/useSmartContractOwner';
 import AdminView from '../Admin/Views/AdminView';
@@ -6,7 +6,9 @@ import Loading from '../Shared/Loading';
 
 const AdminRoute = ({ isWeb3Enabled, isAuthenticated }) => {
   const { smartContractOwnerInfo } = useSmartContractOwner();
-  if ((!isWeb3Enabled && !isAuthenticated)) {
+
+  if (!isWeb3Enabled && !isAuthenticated) {
+    console.log("INSIDE THIS CONDITION***********************************")
     return <Navigate to="/" />
   }
   return (

@@ -1,12 +1,18 @@
 import { SelectOutlined } from '@ant-design/icons';
 import { Button, Card, Modal } from 'antd';
 import React from 'react';
+import { Navigate, useNavigate } from 'react-router';
 import { getExplorer } from '../../helpers/networks';
 import Address from '../Address/Address';
 
 
 const AccountInfoModal = ({ isModalVisible, closeModal, chainId, logout, account }) => {
-
+    let navigate = useNavigate()
+    const onClickDisconnect = () => {
+        logout();
+        closeModal();
+        navigate('/')
+    }
     const RenderMetaMaskConnectedView = () => {
         return (
             <>
@@ -36,10 +42,7 @@ const AccountInfoModal = ({ isModalVisible, closeModal, chainId, logout, account
                         fontSize: "16px",
                         fontWeight: "500",
                     }}
-                    onClick={() => {
-                        logout();
-                        closeModal()
-                    }}
+                    onClick={onClickDisconnect}
                 >
                     Disconnect Wallet
                 </Button>
