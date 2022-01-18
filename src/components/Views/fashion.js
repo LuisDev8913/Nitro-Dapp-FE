@@ -12,7 +12,7 @@ const Fashion = () => {
     const [isMintModalVisible, setIsMintModalVisible] = useState(false)
     const { smartContractInfo } = useContext(DappContext);
     const {isMetaMaskInstalled} = useMetaMaskConnection();
-    const {isAuthenticated, isAuthenticating} = useMoralis();
+    const {isAuthenticated, isAuthenticating, authenticate} = useMoralis();
     const toggleModal = () => {
         setIsMintModalVisible(prev => !prev)
     }
@@ -43,6 +43,9 @@ const Fashion = () => {
         return obj;
     }
 
+    const connectWallet = () => {
+        authenticate({ signingMessage: "Connect with NITID" })
+    }
 
     return (
         <>
@@ -66,7 +69,7 @@ const Fashion = () => {
                                 style={{ fontFamily: 'Cinzel' }}
                                 disabled={getButtonText().buttonDisabled || smartContractInfo.loading || isAuthenticating}
                                 loading={smartContractInfo.loading || isAuthenticating}
-                                onClick={toggleModal}>
+                                onClick={ isAuthenticated ? toggleModal: connectWallet }>
                                 {isAuthenticated ? `MINT ${smartContractInfo.loading ? "" : getButtonText().text}` : `PLEASE CONNECT YOUR WALLET`}
                             </Button>: 
                                 <Button onClick={() => redirectToWebPage()}>

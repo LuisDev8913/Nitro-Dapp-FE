@@ -24,7 +24,7 @@ function TokenPrice(props) {
 
   return (
     <div style={styles.token}>
-      <img src={props.image || noLogoToken} alt="logo" style={{ height: props?.size || "35px" }} />
+      {/* <img src={props.image || noLogoToken} alt="logo" style={{ height: props?.size || "35px" }} /> */}
     </div>
   );
 }
