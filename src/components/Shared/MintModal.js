@@ -107,7 +107,7 @@ const MintModal = ({ isVisible, closeModal }) => {
             maskStyle={{ backgroundColor: '#00000080' }}
             footer={null}
             visible={isVisible}
-            title="Mint Nitid NFT"
+            title="Mint Nitro NFT"
             centered
             onCancel={closeModal}
             width={800}

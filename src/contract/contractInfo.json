@@ -1,7 +1,7 @@
 {
-    "contractName": "NIFIT",
-    "contractAddress": "0x153a8db1f7a96fc4db14b4c4a143a69759112503",
-    "transactionHash": "0x5e55f794cb58b3686b78d684fb56e4425498e10b42d8bce484a3dec773208661",
+    "contractName": "NITRO",
+    "contractAddress": "0x56066a9b68d615E6ce0ea35C42fb169547E8c1dc",
+    "transactionHash": "0x1b36385c94e305b270251e526ec030623a170954d2aed5b0992411148da8e488",
     "PresalePriceInETH": "0.1",
     "MainPriceInETH": "0.1",
     "contractABI": [

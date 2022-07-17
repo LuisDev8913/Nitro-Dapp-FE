@@ -367,5 +367,20 @@ export const SmartContractAdminABI = [
 		"type": "function",
 		"desc": "Returns token numbers of provided wallet address",
 		"slugName": "Wallet Of Owner"
-	}
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "whitelist",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function",
+		"desc": "Add Whitelist Address",
+		"slugName": "Whitelist"
+	},
 ]

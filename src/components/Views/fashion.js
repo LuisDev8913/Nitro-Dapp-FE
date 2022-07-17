@@ -44,7 +44,7 @@ const Fashion = () => {
     }
 
     const connectWallet = () => {
-        authenticate({ signingMessage: "Connect with NITID" })
+        authenticate({ signingMessage: "Connect with Nitro" })
     }
 
     return (
@@ -57,12 +57,12 @@ const Fashion = () => {
                 <div className="container">
                     <div className="s-row">
                         <div className="img">
-                            <img src={FashionNFTImage} alt="NITID FASHION" />
+                            <img src={FashionNFTImage} alt="Nitro FASHION" />
                         </div>
                         <div className="content-box">
-                            <h3>Nitid's Exclusive Fashion NFTs</h3>
+                            <h3>Nitro's Exclusive Fashion NFTs</h3>
                             <p>2,400 NFTs will be minted from the genesis collection. Each NFT will come with a luxury sweatshirt created from the design in your size.</p>
-                            <p>Not only will you receive an NFT design and physical version, but each NFT will grant exclusive or early access to every future Nitid launch that will only increase in value over time. </p>
+                            <p>Not only will you receive an NFT design and physical version, but each NFT will grant exclusive or early access to every future Nitro launch that will only increase in value over time. </p>
                             {
                                 isMetaMaskInstalled ? 
                                 <Button

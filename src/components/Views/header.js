@@ -1,3 +1,4 @@
+import { Button } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 import { NitidLogo } from "../../assets/img";
@@ -19,11 +20,17 @@ const Header = React.memo(() => {
                     </div>
                     <div className="logo">
                         <a href="/#">
-                            <img src={NitidLogo} alt="NITID LOGO" />
+                            <img src={NitidLogo} alt="Nitro LOGO" />
                         </a>
                     </div>
 
                     <div className="hdrbtn">
+                        <Link to={RouteNames.User.transactions}>
+                            <Button style={{marginRight: '20px'}}>
+                                Transactions
+                            </Button>
+
+                        </Link>
                         {
                             smartContractOwnerInfo.loading ? <Loading /> :
                                 smartContractOwnerInfo.isCurrentUserOwner ?

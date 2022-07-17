@@ -3,5 +3,8 @@ export const RouteNames = {
         "admin": "admin",
         "contract": "contract",
         "users": "users"
+    },
+    User: {
+        "transactions": "transactions",
     }
 }

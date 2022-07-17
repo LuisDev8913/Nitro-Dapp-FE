@@ -76,13 +76,6 @@ const DappContextProvider = ({ children }) => {
 
     useEffect(() => {
         if (isWeb3Enabled && isAuthenticated && !isWeb3EnableLoading && isValidChain && account) {
-            console.log("ACCOUNT CHANGED, GETTING NEW RECORDS*******************************")
-            console.log("ACCOUNT CHANGED, GETTING NEW RECORDS*******************************")
-            console.log("ACCOUNT CHANGED, GETTING NEW RECORDS*******************************")
-            console.log("ACCOUNT CHANGED, GETTING NEW RECORDS*******************************")
-            console.log("ACCOUNT CHANGED, GETTING NEW RECORDS*******************************")
-            console.log("ACCOUNT CHANGED, GETTING NEW RECORDS*******************************")
-
             getUserSmartContractInfo()
         }
         // eslint-disable-next-line

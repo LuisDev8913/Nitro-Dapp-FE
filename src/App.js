@@ -8,12 +8,14 @@ import {
 } from "react-router-dom";
 import AdminRoute from './components/Routes/AdminRoute';
 import "antd/dist/antd.css";
+import Transactions from './components/Admin/Views/Transactions';
 
 
 const App = ({ isWeb3Enabled, isAuthenticated }) => {
   let routes = useRoutes([
     { path: "/", element: <MainRoute /> },
-    { path: "/admin/*", element: <AdminRoute isWeb3Enabled={isWeb3Enabled} isAuthenticated={isAuthenticated} /> }
+    { path: "/admin/*", element: <AdminRoute isWeb3Enabled={isWeb3Enabled} isAuthenticated={isAuthenticated} /> },
+    { path: "/transactions", element: <Transactions /> }
   ]);
   return routes;
 };

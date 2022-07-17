@@ -6,7 +6,7 @@ import { columns } from "./colums";
 import { Row, Col } from 'antd';
 
 const UserMetaDataTable = () => {
-  const { data, error, isLoading } = useMoralisQuery("NitidMetaData", (query) => query, [], {
+  const { data, error, isLoading } = useMoralisQuery("EthNFTTransfers", (query) => query, [], {
     live: true,
   });
   const isJSON = (str) => {
@@ -62,12 +62,8 @@ const UserMetaDataTable = () => {
 
       <Row className="row">
         <Col span={50}>
-
           <Table loading={isLoading} columns={columns} dataSource={dataSouce} scroll={{ x: 1500 }} />
         </Col>
-
-
-
       </Row>
 
 

@@ -13,7 +13,7 @@ const Footer = () => {
             <div className="container">
                 <div className="s-row">
                     <div className="copyryt">
-                        <p>2021 Nitid Textiles LLC</p>
+                        <p>2021 Nitro Textiles LLC</p>
                     </div>
                     <ul className="sociallinks">
                         <li>

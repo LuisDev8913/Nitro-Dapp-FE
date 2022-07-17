@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router";
 import { RouteNames } from "../../../constants/routeNames";
 import Contract from "./ContractView";
 import UserData from "./UserData"
+import Transactions from "./Transactions";
 
 const AdminView = ({ isServerInfo }) => {
     return (

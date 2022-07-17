@@ -55,7 +55,7 @@ function Account() {
     if (!isMetaMaskInstalled) {
       setIsMetaMaskModalVisible(true)
     }
-    authenticate({ signingMessage: "Connect with NITID" })
+    authenticate({ signingMessage: "Connect with Nitro" })
   }
 
   const closeMetaMaskModal = () => {
